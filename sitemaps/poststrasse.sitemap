@@ -132,6 +132,7 @@ sitemap poststrasse label="Poststr. 47" {
         }
         Group item=gLights label="Licht" {
                 Default item=abendlicht
+                Default item=schlafzimmer
         }
     }
     Frame label="Internet" {

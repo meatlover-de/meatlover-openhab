@@ -16,7 +16,7 @@ then
     createTimer(now.plusSeconds(1), [| SamsungTV_SetInputHdmi3.postUpdate("OFF")])
 end
 
-rule "Fernseher aausschalten"
+rule "Fernseher ausschalten"
 when
     Item SceneTvOn changed to OFF
 then
