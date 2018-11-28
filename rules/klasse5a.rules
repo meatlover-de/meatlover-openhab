@@ -1,0 +1,19 @@
+rule "Gymto - Nachricht Klasse 5A"
+when
+        Item gymto_klasse5a received update
+then
+    if (gymto_klasse5a.state.toString() == "Keine Vertretung") {
+        gymto_klasse5a_short.postUpdate("Keine Vertretungen")
+        gymto_klasse5a_notifier.postUpdate("OFF")
+    } else {
+        gymto_klasse5a_short.postUpdate("Morgen Vertretungen")
+        gymto_klasse5a_notifier.postUpdate("ON")
+    }
+    if (gymto_klasse5a.state != gymto_klasse5a_old.state) {
+        if ((notifier_gymto.state == ON) && (gymto_klasse5a.state.toString() != "Keine Vertretung")) {
+            sendTelegram("klasse5a",gymto_klasse5a.state.toString)
+            gymto_klasse5a_sent.postUpdate(new DateTimeType())
+        }
+    }
+    gymto_klasse5a_old.postUpdate(gymto_klasse5a.state)
+end

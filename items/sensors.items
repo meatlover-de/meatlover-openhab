@@ -1,0 +1,33 @@
+// Funktion
+Number temp2_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.BME280.Temperature)]" }
+Number temp2_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.BME280.Humidity)]" }
+Number temp2_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.BME280.Pressure)]" }
+Number temp2_vcc "Spannung [%.3f V]" <battery> (gBatteries)
+Contact temp2_vcc_status "Status Spannung [%s]" <battery> (gBatteryStatus)
+Number temp2_vcc_percent "Spannung [%.3f V]" <battery>
+Number temp2_vcc_temp "Spannung [%.3f V]" { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.ANALOG.A0)]" }
+String temp2_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.APMac)]" }
+Number temp2_rssi "RSSI [%d %%]" <network> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.RSSI)]" }
+String temp2_ip "IP Adresse [%s]" <time> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.IPAddress)]"}
+DateTime temp2_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Time)]"}
+
+// Funktion
+Number temp1_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Temperature)]" }
+Number temp1_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Humidity)]" }
+Number temp1_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Pressure)]" }
+Switch temp1_relay "WC Lüfter" <fan> [ "Switchable" ] { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.RELAY.state)],<[mqtt:tele/wc/luefter:state:default],>[mqtt:cmnd/wc/luefter:command:*:default:]" }
+String temp1_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.APMac)]" }
+Number temp1_rssi "RSSI [%d %%]" <network> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.RSSI)]" }
+String temp1_ip "IP Adresse [%s]" <time> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.IPAddress)]" }
+DateTime temp1_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 
+Number temp1_slider "Grenze Luftfeuchtigkeit [%d %%]" <humidity> { mqtt=">[mqtt:cmnd/wc/humidity:command:*:default]" }
+Number temp1_relayruntime "Dauer Lüfterlauf [%d min]" <time> { mqtt=">[mqtt:cmnd/wc/relayruntime:command:*:default],<[mqtt:tele/wc/state:state:JSONPATH($.RELAY.runtime)]" }
+Switch temp1_motion "Bewegung" <motion> (gMotion) { mqtt="<[mqtt:tele/wc/movement:state:default]" }
+//DateTime temp1_motion_time "Uhrzeit letzte Bewegung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 
+
+Contact frontdoor "Eingangstür [MAP(contacts.map):%s]" <door> (gDoorStatus) { mqtt="<[mqtt:tele/frontdoor/STATUS:state:default]" }
+Contact flurdoor "Flurtür [MAP(contacts.map):%s]" <door> (gDoorStatus) { mqtt="<[mqtt:tele/flurdoor/STATUS:state:default]" }
+Number flur_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Temperature)]" }
+Number flur_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Humidity)]" }
+Number flur_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Pressure)]" }
+

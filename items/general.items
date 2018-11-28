@@ -1,0 +1,32 @@
+Number CHART_PERIOD
+
+Group gStatus                    "Status [%s]"           <status> (gHome)
+Group gBatteries 		"Status Batterien" 	<battery> (gHome)
+Group:Contact:OR(OPEN,CLOSED) gBatteryStatus 		"Status Batterien [MAP(battery.map):%s]" 	<battery> (gBatteries)
+
+Group gDoor                     "Gruppe Türen"          <door> (gHome)
+Number gDoorSum	                "Anzahl Türsensoren [%d]" 	        <door>  (gDoor)
+Group:Contact:OR(OPEN, CLOSED) gDoorStatus "Status Türen [MAP(contacts.map):%s]" <door> (gStatus)
+
+Group gWindows  		"Gruppe Fenster" 	<window>
+Number gWindowSum	        "Anzahl Fenstersensoren [%d]" 	        <window>  (gWindow)
+//Group:Contact:OR(OPEN, CLOSED) gWindowStatus "Status Fenster [MAP(contacts.map):%s]" <window> (gWindow)
+
+
+Group gMotion        		"Status Bewegungsmelder" 	<motion>
+Group gWater     		"Status Feuchtigkeit" 	<water>
+Group gCo2      		"Status CO2"	 	<carbondioxide>
+Group gGas      		"Status Gas"	 	<gas>
+Group gLights    		"Status Licht [%s]"	<light>
+
+String attic_object 		"Status Obergeschoss" 	<status>
+String groundfloor_object 	"Status Erdgeschoss" 	<status>
+String cellar_object 		"Status Keller" 	<status>
+String garden_object 		"Status Garten" 	<status>
+String garage_object 		"Status Garage" 	<status>
+String terrace_object 		"Status Terasse" 	<status>
+String driveway_object 		"Status Terasse" 	<status>
+
+String empty_item "Leer"
+
+Switch push_notifications_active	"Push Notifications aktiv" <keyring>

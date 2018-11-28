@@ -1,0 +1,35 @@
+import org.joda.time.*
+
+rule "Licht-Wohnzimmer an"
+when
+    Channel 'astro:sun:home:set#event' triggered START
+then
+    abendlicht.sendCommand("ON")
+    UpdatePresenceLivingRoomTime.postUpdate(240)
+    UpdatePresenceLivingRoom.sendCommand("ON")
+    //CheckTurnOnLivingRoomLights.sendCommand("ON")
+end
+
+rule "Licht-Wohnzimmer an 2"
+when
+    Item abendlicht changed to ON
+then
+    // do not use CheckTurnOnLivingRoomLights to allow light whenever the user wants it
+    abendlicht.sendCommand("ON")
+    UpdatePresenceLivingRoomTime.postUpdate(240)
+    UpdatePresenceLivingRoom.sendCommand("ON")
+end
+
+rule "Licht-Wohnzimmer aus"
+when
+    Time cron "0 * * * * ?"
+then
+    var DateTime off = new DateTime((presenceLivingRoomTime.state as DateTimeType).calendar.timeInMillis)
+    if (now.isAfter(off)) {
+        if (abendlicht.state == ON) {
+            logInfo("wohnzimmer.rules","Presence LR abgelaufen")
+            abendlicht.sendCommand("OFF")
+        }
+    }
+end
+

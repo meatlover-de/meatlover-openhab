@@ -1,0 +1,17 @@
+Switch notifier_gymto
+
+// klasse 5a
+Switch gymto_klasse5a_notifier
+String gymto_klasse5a "VPlan Jule [%s]" {channel="exec:command:klasse5a:output"}
+String gymto_klasse5a_short "VPlan Jule [%s]"
+String gymto_klasse5a_old "VPlan Jule ALT [%s]"
+String gymto_klasse5a_lastrun "Akt. [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" {channel="exec:command:klasse5a:lastexecution"}
+String gymto_klasse5a_sent "Letzte Benachrichtigung verschickt: [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+
+Switch gymto_klasse6a_notifier
+String gymto_klasse6a "VPlan Svenja [%s]" {channel="exec:command:klasse6a:output"}
+String gymto_klasse6a_short "VPlan Svenja [%s]"
+String gymto_klasse6a_old "VPlan Svenja ALT [%s]"
+String gymto_klasse6a_lastrun "Akt. [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" {channel="exec:command:klasse6a:lastexecution"}
+String gymto_klasse6a_sent "Letzte Benachrichtigung verschickt: [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+

@@ -1,0 +1,1183 @@
+sitemap poststrasse label="Poststr. 47" {
+    Frame label="Informationen" icon="settings" {
+        Group item=gStatus {
+            Group item=gBatteryStatus {
+                Group item=temp2_vcc label="Terassensensor [%.3f]" {
+                Text item=temp2_vcc_status label="Terassensensor [%.3f]"
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_vcc period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_vcc period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_vcc period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_vcc period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_vcc period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Default item=temp2_vcc_percent label="Terassensensor [%d %%]"
+
+            }
+            Group item=gDoorStatus {
+                Frame {
+                    Text item=gDoorSum
+                }
+                Frame label="Türstatus" {
+                    Default item=frontdoor
+                    Default item=flurdoor
+                }
+            }
+            Group item=gWindowStatus {
+                Default item=empty_item
+            }
+                Group item=gMotion {
+                    Default item=temp1_motion label="Bewegung im Haupt-Bad"
+                }
+            Default item=gWater
+                Default item=gCo2
+                Default item=gGas
+                Default item=gLight
+                Group item=gCurrentsSum label="Stromaufnahme [%.3f A]" {
+                    Text item=froster_current label="Froster Küche [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=froster_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=froster_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=froster_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=froster_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=froster_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=kfroster_current label="Froster Keller [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=waesche_current label="Waschmaschinen [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=heizung_current label="Heizung [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_current label="Heizung [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=gCurrents period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=gCurrents period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=gCurrents period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=gCurrents period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=gCurrents period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+            Group item=gPowerSum label="Leistungsaufnahme [%d W]" {
+                Text item=froster_power label="Froster Küche [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=froster_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=froster_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=froster_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=froster_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=froster_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Text item=kfroster_power label="Froster Keller [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=kfroster_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=kfroster_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=kfroster_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=kfroster_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=kfroster_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Text item=waesche_power label="Waschmaschinen [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=waesche_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=waesche_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=waesche_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=waesche_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=waesche_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Text item=heizung_power label="Heizung [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=heizung_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=heizung_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=heizung_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=heizung_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=heizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Text item=server_power label="Heizung [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=server_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=server_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=server_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=server_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=server_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                    Chart item=gPower period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                    Chart item=gPower period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                    Chart item=gPower period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                    Chart item=gPower period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                    Chart item=gPower period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+            }
+        }
+        Group item=gLights label="Licht" {
+                Default item=abendlicht
+        }
+    }
+    Frame label="Internet" {
+        Group item=empty_item label="Internetzugang" {
+            Frame label="Zugang" {
+                Default item=svenja_internet_access
+                    Default item=jule_internet_access
+            }
+            Frame label="Einstellungen" {
+                Default item=svenja_internet_access_timed
+                    Default item=jule_internet_access_timed
+                    Default item=internet_startzeit
+                    Default item=internet_endzeit
+            }
+        }
+    }
+    Frame label="Szenen" {
+        Default item=SceneTvOn label="Fernseher anschalten"
+    }
+    Frame label="Haus" {
+        Group item=gAttic label="Obergeschoss" icon="attic" {
+            Frame label="Übersicht" {
+                Default item=attic_object
+            }
+            Frame label="Zimmer" icon="room" {
+                Group item=empty_item label="Svenja" {
+                    Frame label="Licht & Schalter" {
+                        Default item=empty_item
+                    }
+                    Frame label="Status" {
+                        Default item=empty_item label="Temperatur" icon="temperature"
+                            Default item=empty_item label="Luftfeuchtigkeit" icon="humidity"
+                            Default item=empty_item label="Luftdruck" icon="pressure"
+                            Default item=empty_item label="Helligkeit" icon="light"
+                            Default item=empty_item label="Klingel" icon="alarm"
+                            Default item=empty_item label="Bewegungsmelder" icon="motion"
+                            Default item=empty_item label="Fenster" icon="window"
+                            Default item=empty_item label="Balkontür" icon="door"
+                    }
+                }
+                Group item=empty_item label="Jule" {
+                    Frame label="Licht & Schalter" {
+                        Default item=empty_item
+                    }
+                    Frame label="Status" {
+                        Default item=empty_item label="Temperatur" icon="temperature"
+                            Default item=empty_item label="Luftfeuchtigkeit" icon="humidity"
+                            Default item=empty_item label="Luftdruck" icon="pressure"
+                            Default item=empty_item label="Helligkeit" icon="light"
+                            Default item=empty_item label="Klingel" icon="alarm"
+                            Default item=empty_item label="Bewegungsmelder" icon="motion"
+                            Default item=empty_item label="Fenster" icon="window"
+                            Default item=empty_item label="Balkontür" icon="door"
+                    }
+                }
+                Group item=empty_item label="Flur" {
+                    Frame label="Status" {
+                        Default item=empty_item label="Temperatur" icon="temperature"
+                            Default item=empty_item label="Luftfeuchtigkeit" icon="humidity"
+                            Default item=empty_item label="Luftdruck" icon="pressure"
+                            Default item=empty_item label="Helligkeit" icon="light"
+                            Default item=empty_item label="Bewegungsmelder" icon="motion"
+                    }
+                }
+            }
+        }
+        Group item=gGroundfloor label="Erdgeschoss" icon="groundfloor" {
+            Frame label="Übersicht" {
+                Default item=groundfloor_object
+            }
+            Frame label="Licht" {
+                    Default item=abendlicht
+                        Default item=schlafzimmer
+            }
+            Frame label="Lüftung" {
+                Default item=temp1_relay label="Lüfter WC"
+                    Default item=temp3_airswitch label="Lüfter Gäste-WC"
+            }
+            Frame label="Räume" {
+                Group item=gWindfang label="Windfang" {
+                    Default item=frontdoor
+                        Default item=doorbell
+                    Text item=doorbell_active
+                    Default item=doorbell_active_time
+                    Default item=doorbell_status
+                    Default item=doorbell_status_time
+                }
+                Group item=gFlur label="Flur" {
+                        Default item=flurdoor
+                        Group item=flur_temp {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=flur_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=flur_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=flur_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=flur_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=flur_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                    Group item=flur_humi {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=flur_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=flur_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=flur_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=flur_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=flur_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Group item=flur_pres {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=flur_pres period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=flur_pres period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=flur_pres period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=flur_pres period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=flur_pres period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                }
+                Group item=gGaestewc label="Gäste-WC" icon="toilet" {
+                    Frame label="Status" {
+                        Group item=temp3_temp {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp3_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp3_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp3_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp3_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp3_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp3_humi {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp3_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp3_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp3_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp3_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp3_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                    }
+                    Frame label="Schalter" {
+                        Default item=temp3_airswitch
+                    }
+                }
+                Group item=gBadezimmer label="Badezimmer" {
+                    Frame label="Status" {
+                        Group item=temp1_temp {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp1_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp1_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp1_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp1_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp1_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp1_humi {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp1_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp1_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp1_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp1_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp1_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp1_pres {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp1_pres period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp1_pres period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp1_pres period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp1_pres period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp1_pres period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                    }
+                    Frame label="Schalter" {
+                        Default item=temp1_relay
+                    }
+                }
+                Group item=gSchlafzimmer label="Schlafzimmer" {
+                    Frame label="Status" {
+                        Default item=schlafzimmer
+                    }
+                }
+                Group item=gGaestezimmer label="Gästezimmer" {
+                    Default item=empty_icon label="Noch nichts"
+                }
+                Group item=gWohnzimmer label="Wohnzimmer" {
+                    Frame label="Anwesenheit" {
+                        Default item=presenceLivingRoomTime
+                    }
+                    Frame label="Schalter" {
+                        Default item=abendlicht
+                    }
+                    Frame label="Samsung TV" icon="video" {
+                        Group item=gSamsungLR {
+                            Default item=SamsungTV_power
+                                Default item=SamsungTV_mute
+                                Default item=SamsungTV_pause
+                                Text item=SamsungTV_Status label="Status Fernseher [MAP(on_off.map):%s]"
+                                Default item=SamsungTV_LastSeen label="Zuletzt online [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+                                Default item=SamsungTV_Volume
+                                Default item=SamsungTV_Mute
+                                Default item=SamsungTV_Key_Code
+                                Default item=SamsungTV_Power
+                        }
+                        Group item=gSky {
+                            Default item=SkyReceiver_power
+                                Text item=SkyReceiver_Status label="Status Sky [MAP(on_off.map):%s]"
+                                Default item=SkyReceiver_LastSeen label="Zuletzt online [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+                                Default item=SkyReceiver_pause
+                        }
+                        Group item=gOnkyoLR {
+                            Default item=empty_item
+                        }
+                        Group item=gRMPRO {
+                                Text item=RMPRO_Status label="RMPRO [MAP(on_off.map):%s]"
+                                Default item=RMPRO_LastSeen label="Zuletzt online [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
+                        }
+                    }
+                    Frame label="Alexa" {
+                        Group item=empty_item label="Wohnzimmer" {
+                            Slider    item=Echo_Living_Room_Volume
+                            Selection item=Echo_Living_Room_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                        }
+                        Group item=empty_item label="Schlafzimmer" {
+                            Slider    item=Echo_MasterBedRoom_Volume
+                            Selection item=Echo_MasterBedRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                        }
+                        Group item=empty_item label="Badezimmer" {
+                            Slider    item=Echo_BadezimmerRoom_Volume
+                            Selection item=Echo_BadezimmerRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                        }
+                        Group item=empty_item label="Svenja" {
+                            Slider    item=Echo_SvenjaRoom_Volume
+                            Selection item=Echo_SvenjaRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                        }
+                        Group item=empty_item label="Jule" {
+                            Slider    item=Echo_JuleRoom_Volume
+                            Selection item=Echo_JuleRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                        }
+                    }
+                }
+                Group item=gEsszimmer label="Esszimmer" {
+                    Default item=empty_icon label="Noch nichts"
+                }
+                Group item=gKueche label="Küche" {
+                    Frame label="Froster" {
+                        Text item= froster_yesterday {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_yesterday period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_yesterday period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_yesterday period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_yesterday period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_yesterday period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item= froster_today {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_today period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_today period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_today period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_today period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_today period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item= froster_power {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item= froster_factor {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_factor period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_factor period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_factor period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_factor period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_factor period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item= froster_voltage {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_voltage period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_voltage period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_voltage period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_voltage period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_voltage period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item= froster_current {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=froster_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=froster_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=froster_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=froster_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=froster_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                    }
+                }
+            }
+        }
+        Group item=gCellar label="Keller" icon="cellar" {
+            Frame label="Übersicht" {
+                Default item=cellar_object
+            }
+            Frame label="Geräte" {
+                Group item=empty_item label="Froster [%s]" {
+                    Text item= kfroster_yesterday {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_yesterday period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_yesterday period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_yesterday period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_yesterday period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_yesterday period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= kfroster_today {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_today period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_today period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_today period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_today period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_today period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= kfroster_power {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= kfroster_factor {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_factor period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_factor period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_factor period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_factor period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_factor period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= kfroster_voltage {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_voltage period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_voltage period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_voltage period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_voltage period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_voltage period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= kfroster_current {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=kfroster_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=kfroster_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=kfroster_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=kfroster_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=kfroster_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                }
+                Group item=empty_item label="Waschmaschinen & Trocker" {
+                    Text item= waesche_yesterday {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_yesterday period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_yesterday period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_yesterday period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_yesterday period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_yesterday period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= waesche_today {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_today period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_today period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_today period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_today period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_today period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= waesche_power {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= waesche_factor {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_factor period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_factor period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_factor period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_factor period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_factor period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= waesche_voltage {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_voltage period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_voltage period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_voltage period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_voltage period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_voltage period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= waesche_current {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=waesche_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=waesche_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=waesche_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=waesche_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=waesche_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                }
+                Group item=empty_item label="IT-Schrank" {
+                    Text item= server_yesterday {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_yesterday period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_yesterday period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_yesterday period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_yesterday period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_yesterday period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_today {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_today period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_today period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_today period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_today period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_today period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_power {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_factor {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_factor period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_factor period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_factor period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_factor period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_factor period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_voltage {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_voltage period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_voltage period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_voltage period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_voltage period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_voltage period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item=server_current {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=server_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=server_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=server_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=server_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=server_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                }
+            }
+            Frame label="Heizungsraum" {
+                Group item=empty_item label="OptoLink" {
+                    Default item=empty_item label="Heizung via Optolink-Ansteuerung" icon="heating"
+                        // https://github.com/openv/openv/wiki/Bauanleitung-USB
+                }
+                Group item=empty_item label="Heizung" {
+                    Text item= heizung_yesterday {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_yesterday period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_yesterday period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_yesterday period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_yesterday period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_yesterday period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= heizung_today {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_today period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_today period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_today period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_today period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_today period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= heizung_power {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= heizung_factor {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_factor period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_factor period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_factor period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_factor period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_factor period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= heizung_voltage {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_voltage period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_voltage period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_voltage period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_voltage period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_voltage period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                    Text item= heizung_current {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=heizung_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=heizung_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=heizung_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=heizung_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=heizung_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
+                }
+            }
+            Frame label="Rest"
+        }
+        Group item=gTerrace label="Terasse" icon="terrace" {
+            Frame label="Schalter" {
+                Default item=empty_item label="Kamera" icon="camera"
+                    Default item=empty_item label="Licht 1" icon="lightbulb"
+                    Default item=empty_item label="Licht 2" icon="lightbulb"
+                    Default item=empty_item label="Ventilator 1" icon="fan"
+                    Default item=empty_item label="Ventilator 2" icon="fan"
+            }
+            Frame label="Sensoren" {
+
+                Group item=temp2_temp {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Group item=temp2_humi {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Group item=temp2_pres {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_pres period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_pres period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_pres period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_pres period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_pres period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Group item=temp2_vcc label="Terassensensor [%.3f]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_vcc period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_vcc period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_vcc period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_vcc period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_vcc period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Default item=temp2_vcc_percent label="Terassensensor [%d %%]"
+            }
+        }
+        Group item=gGarden label="Garten" icon="garden" {
+            Default item=garden_object
+        }
+        Group item=gGarage label="Garage" icon="garage" {
+            Default item=garage_object
+        }
+        Group item=gDriveway label="Auffahrt" icon="outdoorlight" {
+            Default item=driveway_object
+        }
+    }
+    Frame label="Sonstiges" {
+        Group item=gNetworkDevices icon="settings" {
+            Frame label="Telefone" {
+                Group item=empty_item label="Udo" icon="boy_1" {
+                    Text item=udo_iPhone_BatteryStatus
+                        Text item=udo_iPhone_BatteryLevel
+                        Switch item=udo_iPhone_Home
+                        Text item=udo_iPhone_LocationAccuracy
+                        Text item=udo_iPhone_LocationLastUpdate
+                        Switch item=udo_iPhone_FindMyPhone mappings=[ ON="Find!" ]
+                        Switch item=udo_iPhone_Refresh mappings=[ REFRESH='Refresh now' ]
+                        // mapview for web UI, invisible in iOS client
+                        Mapview item=udo_iPhone_Location height=10
+                        Chart item=alias_udo_iPhone_Home period=D refresh=60000
+                }
+                Group item=empty_item label="Meike" icon="girl_3" {
+                    Text item=meike_iPhone_BatteryStatus
+                        Text item=meike_iPhone_BatteryLevel
+                        Switch item=meike_iPhone_Home
+                        Text item=meike_iPhone_LocationAccuracy
+                        Text item=meike_iPhone_LocationLastUpdate
+                        Switch item=meike_iPhone_FindMyPhone mappings=[ ON="Find!" ]
+                        Switch item=meike_iPhone_Refresh mappings=[ REFRESH='Refresh now' ]
+                        // mapview for web UI, invisible in iOS client
+                        Mapview item=meike_iPhone_Location height=10
+                        Chart item=alias_meike_iPhone_Home period=D refresh=60000
+                }
+                Group item=empty_item label="Svenja" icon="girl_3" {
+                    Text item=svenja_iPhone_BatteryStatus
+                        Default item=svenja_iPhone_BatteryLevel
+                        Switch item=svenja_iPhone_Home
+                        Text item=svenja_iPhone_LocationAccuracy
+                        Text item=svenja_iPhone_LocationLastUpdate
+                        Switch item=svenja_iPhone_FindMyPhone mappings=[ ON="Find!" ]
+                        Switch item=svenja_iPhone_Refresh mappings=[ REFRESH='Refresh now' ]
+                        // mapview for web UI, invisible in iOS client
+                        Mapview item=svenja_iPhone_Location height=10
+                        Chart item=alias_svenja_iPhone_Home period=D refresh=60000
+                }
+                Group item=empty_item label="Jule" icon="girl_2" {
+                    Text item=jule_iPhone_BatteryStatus
+                        Text item=jule_iPhone_BatteryLevel
+                        Switch item=jule_iPhone_Home
+                        Text item=jule_iPhone_LocationAccuracy
+                        Text item=jule_iPhone_LocationLastUpdate
+                        Switch item=jule_iPhone_FindMyPhone mappings=[ ON="Find!" ]
+                        Switch item=jule_iPhone_Refresh mappings=[ REFRESH='Refresh now' ]
+                        // mapview for web UI, invisible in iOS client
+                        Mapview item=jule_iPhone_Location height=10
+                        Chart item=alias_jule_iPhone_Home period=D refresh=60000
+                }
+            }
+            Frame label="Geräte" {
+                Group item=empty_item label="Unifi Cloud Controller" icon="it_network" {
+                    Group item=empty_item label="iPhones" icon="mobile" {
+                        Frame {
+                            Text item=UdoPhone
+                                Text item=UdoPhoneSite
+                                Text item=UdoPhoneAP
+                                Text item=UdoPhoneESSID
+                                Text item=UdoPhoneRSSI
+                                Text item=UdoPhoneUptime
+                                Text item=UdoPhoneLastSeen
+                        }
+                        Frame {
+                            Text item=MeikePhone
+                                Text item=MeikePhoneSite
+                                Text item=MeikePhoneAP
+                                Text item=MeikePhoneESSID
+                                Text item=MeikePhoneRSSI
+                                Text item=MeikePhoneUptime
+                                Text item=MeikePhoneLastSeen
+                        }
+                        Frame {
+                            Text item=SvenjaPhone
+                                Text item=SvenjaPhoneSite
+                                Text item=SvenjaPhoneAP
+                                Text item=SvenjaPhoneESSID
+                                Text item=SvenjaPhoneRSSI
+                                Text item=SvenjaPhoneUptime
+                                Text item=SvenjaPhoneLastSeen
+                        }
+                        Frame {
+                            Text item=JulePhone
+                                Text item=JulePhoneSite
+                                Text item=JulePhoneAP
+                                Text item=JulePhoneESSID
+                                Text item=JulePhoneRSSI
+                                Text item=JulePhoneUptime
+                                Text item=JulePhoneLastSeen
+                        }
+                    }
+                }
+                Group item=empty_item label="Server" icon="it_network" {
+                    Default item=empty_item
+                }
+                Group item=empty_item icon="it_network" {
+                    Default item=empty_item
+                }
+                Group item=empty_item label="Kameras" icon="camera" {
+                    Default item=empty_item
+                }
+                Group item=empty_item label="Sensoren" icon="it_network" {
+                    Frame label="Haupt-WC" {
+                        Default item=temp1_temp
+                            Default item=temp1_humi
+                            Default item=temp1_pres
+                            Default item=temp1_relay
+                            Selection item=temp1_slider mappings=[0="An", 10="10%", 20="20%", 30="30%", 40="40%", 50="50%", 60="60%", 70="70%", 80="80%", 90="90%", 100="Aus"]
+                            Selection item=temp1_relayruntime mappings=[1="1 Minute", 5="5 Minuten", 10="10 Minuten", 15="15 Minuten"]
+                            Default item=temp1_motion
+                            Default item=temp1_motion_time
+                            Default item=temp1_rssi
+                            Default item=temp1_mac
+                            Default item=temp1_lastupdate
+                            Default item=temp1_ip
+                    }
+                    Frame label="Temp Terasse" {
+                        Group item=temp2_temp {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp2_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp2_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp2_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp2_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp2_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp2_humi {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp2_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp2_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp2_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp2_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp2_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp2_pres {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp2_pres period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp2_pres period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp2_pres period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp2_pres period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp2_pres period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp2_vcc {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp2_vcc period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp2_vcc period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp2_vcc period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp2_vcc period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp2_vcc period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Group item=temp2_rssi {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=temp2_rssi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=temp2_rssi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=temp2_rssi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=temp2_rssi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=temp2_rssi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Default item=temp2_mac
+                            Default item=temp2_lastupdate
+                            Default item=temp2_ip
+                    }
+                    Frame label="Temp GästeWC" {
+                        Default item=temp3_temp
+                            Default item=temp3_humi
+                            Default item=temp3_rssi
+                            Default item=temp3_mac
+                            Default item=temp3_lastupdate
+                            Default item=temp3_firmware
+                    }
+                }
+                Group item=gSockets {
+                    Frame label="Abendlicht" {
+                        Text item=abendlicht_rssi
+                            Text item=abendlicht_mac
+                            Text item=abendlicht_lastupdate
+                            Text item=abendlicht_firmware
+                            Text item=abendlicht_total
+                            Text item=abendlicht_yesterday
+                            Text item=abendlicht_today
+                            Text item=abendlicht_power
+                            Text item=abendlicht_factor
+                            Text item=abendlicht_voltage
+                            Text item=abendlicht_current
+                    }
+                    Frame label="Froster Keller" {
+                        Text item=kfroster
+                            Text item=kfroster_rssi
+                            Text item=kfroster_mac
+                            Text item=kfroster_lastupdate
+                            Text item=kfroster_firmware
+                            Text item=kfroster_total
+                            Text item= kfroster_yesterday
+                            Text item= kfroster_today
+                            Text item= kfroster_power
+                            Text item= kfroster_factor
+                            Text item= kfroster_voltage
+                            Text item= kfroster_current
+                    }
+                    Frame label="Froster Küche" {
+                        Text item=froster
+                            Text item=froster_rssi
+                            Text item=froster_mac
+                            Text item=froster_lastupdate
+                            Text item=froster_firmware
+                            Text item=froster_total
+                            Text item=froster_yesterday
+                            Text item=froster_today
+                            Text item=froster_power
+                            Text item=froster_factor
+                            Text item=froster_voltage
+                            Text item=froster_current
+                    }
+                    Frame label="Heizung" {
+                        Text item=heizung
+                            Text item=heizung_rssi
+                            Text item=heizung_mac
+                            Text item=heizung_lastupdate
+                            Text item=heizung_firmware
+                            Text item=heizung_total
+                            Text item=heizung_yesterday
+                            Text item=heizung_today
+                            Text item=heizung_power
+                            Text item=heizung_factor
+                            Text item=heizung_voltage
+                            Text item=heizung_current
+                    }
+                    Frame label="Waschmaschine" {
+                        Text item=waesche
+                            Text item=waesche_rssi
+                            Text item=waesche_mac
+                            Text item=waesche_lastupdate
+                            Text item=waesche_firmware
+                            Text item=waesche_total
+                            Text item=waesche_yesterday
+                            Text item=waesche_today
+                            Text item=waesche_power
+                            Text item=waesche_factor
+                            Text item=waesche_voltage
+                            Text item=waesche_current
+                    }
+                    Frame label="Sonoff1" {
+                        Switch item=sonoff1
+                            Text item=sonoff1_rssi
+                            Text item=sonoff1_mac
+                            Text item=sonoff1_lastupdate
+                            Text item=sonoff1_firmware
+                            Text item=sonoff1_total
+                            Text item=sonoff1_yesterday
+                            Text item=sonoff1_today
+                            Text item=sonoff1_power
+                            Text item=sonoff1_factor
+                            Text item=sonoff1_voltage
+                            Text item=sonoff1_current
+                    }
+                    Frame label="Server" {
+                        Switch item=server
+                            Text item=server_rssi
+                            Text item=server_mac
+                            Text item=server_lastupdate
+                            Text item=server_firmware
+                            Text item=server_total
+                            Text item=server_yesterday
+                            Text item=server_today
+                            Text item=server_power
+                            Text item=server_factor
+                            Text item=server_voltage
+                            Text item=server_current
+                    }
+                    Frame label="Sonoff3" {
+                        Switch item=sonoff3
+                            Text item=sonoff3_rssi
+                            Text item=sonoff3_mac
+                            Text item=sonoff3_lastupdate
+                            Text item=sonoff3_firmware
+                            Text item=sonoff3_total
+                            Text item=sonoff3_yesterday
+                            Text item=sonoff3_today
+                            Text item=sonoff3_power
+                            Text item=sonoff3_factor
+                            Text item=sonoff3_voltage
+                            Text item=sonoff3_current
+                    }
+                    Frame label="Schlafzimmer" {
+                        Switch item=schlafzimmer
+                            Text item=schlafzimmer_rssi
+                            Text item=schlafzimmer_mac
+                            Text item=schlafzimmer_lastupdate
+                            Text item=schlafzimmer_firmware
+                            Text item=schlafzimmer_total
+                            Text item=schlafzimmer_yesterday
+                            Text item=schlafzimmer_today
+                            Text item=schlafzimmer_power
+                            Text item=schlafzimmer_factor
+                            Text item=schlafzimmer_voltage
+                            Text item=schlafzimmer_current
+                    }
+                }
+            }
+            Frame label="Informationen" {
+                Group item=empty_item label="RSSI" {
+                    Text item=abendlicht_rssi label="Treppenlicht [%d %%]"
+                        Default item=temp1_rssi label="Badezimmer [%d %%]"
+                        Default item=temp2_rssi label="Terasse [%d %%]"
+                        Default item=temp3_rssi label="Gäste-WC [%d %%]"
+                        Default item=kfroster_rssi label="Froster Keller [%d %%]"
+                        Default item=froster_rssi label="Froster Küche [%d %%]"
+                        Default item=heizung_rssi label="Heizung [%d %%]"
+                        Default item=waesche_rssi label="Waschmaschinen [%d %%]"
+                        Default item=sonoff1_rssi label="Sonoff1 [%d %%]"
+                        Default item=server_rssi label="IT-Schrank [%d %%]"
+                        Default item=sonoff3_rssi label="Sonoff3 [%d %%]"
+                        Default item=schlafzimmer_rssi label="Schlafzimmer [%d %%]"
+                }
+                Group item=empty_item label="Tasmota Firmware" {
+                    Frame label="Firmware Status" {
+                        Text item=Sonoff_Current_FW_Available
+                    }
+                    Frame label="Geräte" {
+                        Text item=abendlicht_firmware label="Treppenlicht [%s]"
+                            Default item=temp3_firmware label="Gäste-WC [%s]"
+                            Default item=kfroster_firmware label="Froster Keller [%s]"
+                            Default item=froster_firmware label="Froster Küche [%s]"
+                            Default item=heizung_firmware label="Heizung [%s]"
+                            Default item=waesche_firmware label="Waschmaschinen [%s]"
+                            Default item=sonoff1_firmware label="Sonoff1 [%s]"
+                            Default item=server_firmware label="IT-Schrank [%s]"
+                            Default item=sonoff3_firmware label="Sonoff3 [%s]"
+                            Default item=schlafzimmer_firmware label="Schlafzimmer [%s]"
+                    }
+                }
+            }
+        }
+        Group item=gWeather label="Wetter" icon="climate" {
+            Frame label="Status" {
+                Default item=Night_State
+            }
+            Frame label="Sonne" {
+                Text item=Day_Phase icon="sunmoon" label="Phase des Tages"
+                    Text item=Sunrise_Time icon="sunrise"
+                    Text item=Sunset_Time icon="sunset"
+                    Group item=Sun_Elevation icon="sunmoon" {
+                        Chart item=elevations period=D refresh=60000 legend=true
+                    }
+                Group item=Moon_Elevation icon="sunmoon" {
+                    Chart item=elevations period=D refresh=60000 legend=true
+                }
+                Text item=Zodiac_Sign icon="zodiac"
+                    Text item=Moon_Phase
+                    Text item=Moon_Next_Full icon="fullmoon"
+                    visibility=[Moon_Phase == WAXING_CRESCENT,
+                    Moon_Phase == FIRST_QUARTER,
+                    Moon_Phase == WAXING_GIBBOUS,
+                    Moon_Phase == FULL]
+                        Text item=Moon_Next_New icon="fullmoon"
+                        visibility=[Moon_Phase == WANING_GIBBOUS,
+                    Moon_Phase == THIRD_QUARTER,
+                    Moon_Phase == WANING_CRESCENT,
+                    Moon_Phase == NEW]
+            }
+            Frame label="Wetter" {
+                Text item=Condition label="Tostedt" {
+                    Frame label="Temperatur" {
+                        Text item=Temperature
+                    }
+                    Frame label="Atmosphäre" {
+                        Text item=Humidity        
+                            Text item=Visibility      
+                            Text item=Pressure        
+                    }
+                    Frame label="condition" {
+                        Text item=Condition
+                            Text item=Condition_ID
+                            Text item=ObservationTime
+                            Text item=LastUpdate
+                            Text item=CommonId
+                    }
+                    Frame label="precipitation" {
+                        Text item=Rain
+                            Text item=Snow
+                    }
+                    Frame label="temperature" {
+                        Text item=Temperature
+                            Text item=Temp_Feel
+                    }
+                    Frame label="wind" {
+                        Text item=Wind_Speed
+                            Text item=Wind_Direction
+                            Text item=Wind_Degree
+                            Text item=Wind_Chill
+                    }
+
+                    Frame label="forecast 1 day" {
+                        Text item=Temp_MinMax_1
+                            Text item=Temp_MinMax_2
+                            Text item=Temp_MinMax_3
+                            Text item=Temp_MinMax_4
+                            Text item=Temp_MinMax_5
+                            Text item=Temp_Min_1
+                            Text item=Temp_Max_1
+                    }
+
+                }
+            }
+        }
+        Group item=empty_item label="Einstellungen" icon="settings" {
+            Frame label="Allgemein" icon="settings" {
+                Default item=push_notifications_active
+                    Default item=presence_detection
+                    Default item=presence_simulation
+                    Default item=CheckTurnOnLivingRoomLights
+            }
+            Frame label="OpenHAB Bindings" {
+                Group item=empty_item label="Gymnasium Tostedt" {
+                    Frame label="Allgemein" {
+                        Default item=notifier_gymto label="Nachrichten an GymTo Telegram aktivieren"
+                    }
+                    Frame label="Klasse Jule" {
+                        Default item=gymto_klasse5a_notifier
+                            Default item=gymto_klasse5a_short
+                            Default item=gymto_klasse5a_lastrun
+                            Default item=gymto_klasse5a_sent
+                    }
+                    Frame label="Klasse Svenja" {
+                        Default item=gymto_klasse6a_notifier
+                            Default item=gymto_klasse6a_short
+                            Default item=gymto_klasse6a_lastrun
+                            Default item=gymto_klasse6a_sent
+                    }
+                }
+            }
+            Frame label="Infos" {
+                Group item=empty_item label="Ferien & Feiertage" {
+                    Default item=GlobalHoliday
+                        Default item=GlobalHolidayName
+                }
+                Group item=SpeedtestSummary {
+                    Frame label="Ergebnisse" {
+                        Text item=SpeedtestResultDown {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=SpeedtestResultDown period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=SpeedtestResultDown period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=SpeedtestResultDown period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=SpeedtestResultDown period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=SpeedtestResultDown period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item=SpeedtestResultUp {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=SpeedtestResultUp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=SpeedtestResultUp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=SpeedtestResultUp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=SpeedtestResultUp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=SpeedtestResultUp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                        Text item=SpeedtestResultPing {
+                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                Chart item=SpeedtestResultPing period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                Chart item=SpeedtestResultPing period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                Chart item=SpeedtestResultPing period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                Chart item=SpeedtestResultPing period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                Chart item=SpeedtestResultPing period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                        }
+                    }
+                    Frame label="Steuerung" {
+                        Text item=SpeedtestResultDate
+                            Text item=SpeedtestRunning label="Speedtest [%s]" visibility=[SpeedtestRunning != "-"]
+                            Switch item=SpeedtestRerun mappings=[ON="Start"]
+                    }
+                }
+            }
+        }
+        Group item=empty_item label="Logs" icon="file" {
+            Group item=empty_item label="Türklingel" icon="doorbell" {
+                Default item=logDoorbellRaw
+                Default item=logDoorbellRunning
+                Default item=logDoorbellExitValue
+                Default item=logDoorbellLastExecution
+
+                Webview url="http://192.168.1.25/weblogs/doorbell.txt" height=20
+            }
+            Group item=empty_item label="Türen" icon="door" {
+                Default item=logDoorsRaw
+                Default item=logDoorsRunning
+                Default item=logDoorsExitValue
+                Default item=logDoorsLastExecution
+                
+                Webview url="http://192.168.1.25/weblogs/door.txt" height=20
+            }
+        }
+    }
+}

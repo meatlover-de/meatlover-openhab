@@ -1,0 +1,42 @@
+import java.lang.Math.*
+import org.joda.time.*
+
+val String filename = "sensors.rules"
+
+rule "Sensors - Calculate VCC"
+when
+        Item temp2_vcc_temp received update
+then
+    var value = temp2_vcc_temp.state as DecimalType
+    var vcc = value / 1014 * 4.26
+
+    temp2_vcc.postUpdate(vcc)
+
+    // calculate percentage, max 4.3, low 3.3
+    // (4.3 - 3.3) = 100% => 1
+    // (3.3 - 3.3) = 0%   => 0
+    var diff = (temp2_vcc.state as DecimalType) - 3.3
+    var percent = diff * 100
+    temp2_vcc_percent.postUpdate(percent)
+end
+
+rule "Sensors - Warning VCC"
+when
+        Item temp2_vcc received update
+then
+    if ((temp2_vcc.state as DecimalType) < 4.3) {
+        logInfo("sensors.rules","temp2_vcc: Low voltage " + temp2_vcc.state)
+        sendBroadcastNotification("Batterie alle auf Terasse: " + temp2_vcc.state + "V")
+    }
+end
+
+rule "Timestamp motion detection - temp1"
+when
+        Item temp1_motion changed 
+then
+        if (temp1_motion.state == "ON") {
+            temp1_motion_time.postUpdate(new DateTimeType())
+        }
+end
+
+

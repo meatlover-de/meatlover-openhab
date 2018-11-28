@@ -1,0 +1,11 @@
+rule "Update Presence Livingroom"
+when
+    Item UpdatePresenceLivingRoom received command ON
+then
+    var DateTime StartTime = new DateTime()
+    var minutes = (UpdatePresenceLivingRoomTime.state as DecimalType).intValue
+    var DateTime EndTime = StartTime.plusMinutes(minutes) 
+    presenceLivingRoomTime.postUpdate(new DateTimeType(EndTime.toCalendar(null)))
+
+    UpdatePresenceLivingRoom.postUpdate("OFF")
+end

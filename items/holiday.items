@@ -1,0 +1,7 @@
+String GlobalSpecialDayICAL
+	{http="<[https://www.schulferien.org/media/ical/deutschland/feiertage_niedersachsen_%1$tY.ics?k=B0jyjJAexBItjfCnjrpub8HTDJ9bBdJicybjeaeCtIa270EV88OWwtL8DGtpdQNuqU4RgySEz2pu2oxFfOfIwGE3ckM0PFf8R7g2ZkTZHZk:7200000:JS(ical_holiday.js)]"}
+String GlobalHolidayICAL
+	{http="<[https://www.schulferien.org/media/ical/deutschland/ferien_niedersachsen_%1$tY.ics?k=UUVxOXOTGTyfb7_jxJSkgkNg3_gPV8Ra7ZJAV_GoGwCMr8GCQ8dHZEFUzmHPVv9NGjvrtDCmcUlkjMsjdgLd7SWDAELfrDMqRhy51fSsH7o.ics:7200000:JS(ical_holiday.js)]"}
+Switch GlobalHoliday "Es ist Ferienzeit"
+	(gSystem)
+String GlobalHolidayName "Ferienname [%s]"

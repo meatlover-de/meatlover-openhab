@@ -1,0 +1,79 @@
+rule "Udo iPhone Home"
+when
+    Item udo_iPhone_Location changed
+then
+    // specify your home location
+    val PointType home_location  = new PointType(new DecimalType(53.276662), new DecimalType(9.722099))
+    val PointType phone_location = udo_iPhone_Location.state as PointType
+    val int distance = phone_location.distanceFrom(home_location).intValue()
+    // specify your preferred radius (in meters)
+    if ( distance < 300) {
+        udo_iPhone_Home.postUpdate(ON)
+        logInfo("iPhone Home", "Udo ist zu Hause.")
+        alias_udo_iPhone_Home.postUpdate(1)
+    } else {
+        udo_iPhone_Home.postUpdate(OFF)
+        logInfo("iPhone Home", "Udo ist unterwegs.")
+        alias_udo_iPhone_Home.postUpdate(0)
+    }
+end
+
+rule "Meike iPhone Home"
+when
+    Item meike_iPhone_Location changed
+then
+    // specify your home location
+    val PointType home_location  = new PointType(new DecimalType(53.276662), new DecimalType(9.722099))
+    val PointType phone_location = meike_iPhone_Location.state as PointType
+    val int distance = phone_location.distanceFrom(home_location).intValue()
+    // specify your preferred radius (in meters)
+    if ( distance < 300) {
+        meike_iPhone_Home.postUpdate(ON)
+        logInfo("iPhone Home", "Meike ist zu Hause.")
+        alias_meike_iPhone_Home.postUpdate(1)
+    } else {
+        meike_iPhone_Home.postUpdate(OFF)
+        logInfo("iPhone Home", "Meike ist unterwegs.")
+        alias_meike_iPhone_Home.postUpdate(0)
+    }
+end
+
+rule "Svenja iPhone Home"
+when
+    Item svenja_iPhone_Location changed
+then
+    // specify your home location
+    val PointType home_location  = new PointType(new DecimalType(53.276662), new DecimalType(9.722099))
+    val PointType phone_location = svenja_iPhone_Location.state as PointType
+    val int distance = phone_location.distanceFrom(home_location).intValue()
+    // specify your preferred radius (in meters)
+    if ( distance < 300) {
+        svenja_iPhone_Home.postUpdate(ON)
+        logInfo("iPhone Home", "Svenja ist zu Hause.")
+        alias_svenja_iPhone_Home.postUpdate(1)
+    } else {
+        svenja_iPhone_Home.postUpdate(OFF)
+        logInfo("iPhone Home", "Svenja ist unterwegs.")
+        alias_svenja_iPhone_Home.postUpdate(0)
+    }
+end
+
+rule "Jule iPhone Home"
+when
+    Item jule_iPhone_Location changed
+then
+    // specify your home location
+    val PointType home_location  = new PointType(new DecimalType(53.276662), new DecimalType(9.722099))
+    val PointType phone_location = jule_iPhone_Location.state as PointType
+    val int distance = phone_location.distanceFrom(home_location).intValue()
+    // specify your preferred radius (in meters)
+    if ( distance < 300) {
+        jule_iPhone_Home.postUpdate(ON)
+        logInfo("iPhone Home", "Jule ist zu Hause.")
+        alias_jule_iPhone_Home.postUpdate(1)
+    } else {
+        jule_iPhone_Home.postUpdate(OFF)
+        logInfo("iPhone Home", "Jule ist unterwegs.")
+        alias_jule_iPhone_Home.postUpdate(0)
+    }
+end

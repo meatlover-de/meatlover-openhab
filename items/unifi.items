@@ -1,0 +1,31 @@
+Switch   UdoPhone           "Udo iPhone [MAP(unifi.map):%s]"             { channel="unifi:client:home:udosPhone:online" }
+String   UdoPhoneSite       "Udo iPhone: Site [%s]"                      { channel="unifi:client:home:udosPhone:site" }
+String   UdoPhoneAP         "Udo iPhone: AP [%s]"                        { channel="unifi:client:home:udosPhone:ap" }
+String   UdoPhoneESSID      "Udo iPhone: ESSID [%s]"                     { channel="unifi:client:home:udosPhone:essid" }
+Number   UdoPhoneRSSI       "Udo iPhone: RSSI [%d]"                      { channel="unifi:client:home:udosPhone:rssi" }
+Number   UdoPhoneUptime     "Udo iPhone: Uptime [%d]"                    { channel="unifi:client:home:udosPhone:uptime" }
+DateTime UdoPhoneLastSeen   "Udo iPhone: Last Seen [%1$tH:%1$tM:%1$tS]"  { channel="unifi:client:home:udosPhone:lastSeen" } 
+
+Switch   MeikePhone           "Meike iPhone [MAP(unifi.map):%s]"             { channel="unifi:client:home:meikesPhone:online" }
+String   MeikePhoneSite       "Meike iPhone: Site [%s]"                      { channel="unifi:client:home:meikesPhone:site" }
+String   MeikePhoneAP         "Meike iPhone: AP [%s]"                        { channel="unifi:client:home:meikesPhone:ap" }
+String   MeikePhoneESSID      "Meike iPhone: ESSID [%s]"                     { channel="unifi:client:home:meikesPhone:essid" }
+Number   MeikePhoneRSSI       "Meike iPhone: RSSI [%d]"                      { channel="unifi:client:home:meikesPhone:rssi" }
+Number   MeikePhoneUptime     "Meike iPhone: Uptime [%d]"                    { channel="unifi:client:home:meikesPhone:uptime" }
+DateTime MeikePhoneLastSeen   "Meike iPhone: Last Seen [%1$tH:%1$tM:%1$tS]"  { channel="unifi:client:home:meikesPhone:lastSeen" } 
+
+Switch   SvenjaPhone           "Svenja iPhone [MAP(unifi.map):%s]"             { channel="unifi:client:home:svenjasPhone:online" }
+String   SvenjaPhoneSite       "Svenja iPhone: Site [%s]"                      { channel="unifi:client:home:svenjasPhone:site" }
+String   SvenjaPhoneAP         "Svenja iPhone: AP [%s]"                        { channel="unifi:client:home:svenjasPhone:ap" }
+String   SvenjaPhoneESSID      "Svenja iPhone: ESSID [%s]"                     { channel="unifi:client:home:svenjasPhone:essid" }
+Number   SvenjaPhoneRSSI       "Svenja iPhone: RSSI [%d]"                      { channel="unifi:client:home:svenjasPhone:rssi" }
+Number   SvenjaPhoneUptime     "Svenja iPhone: Uptime [%d]"                    { channel="unifi:client:home:svenjasPhone:uptime" }
+DateTime SvenjaPhoneLastSeen   "Svenja iPhone: Last Seen [%1$tH:%1$tM:%1$tS]"  { channel="unifi:client:home:svenjasPhone:lastSeen" } 
+
+Switch   JulePhone           "Jule iPhone [MAP(unifi.map):%s]"             { channel="unifi:client:home:julesPhone:online" }
+String   JulePhoneSite       "Jule iPhone: Site [%s]"                      { channel="unifi:client:home:julesPhone:site" }
+String   JulePhoneAP         "Jule iPhone: AP [%s]"                        { channel="unifi:client:home:julesPhone:ap" }
+String   JulePhoneESSID      "Jule iPhone: ESSID [%s]"                     { channel="unifi:client:home:julesPhone:essid" }
+Number   JulePhoneRSSI       "Jule iPhone: RSSI [%d]"                      { channel="unifi:client:home:julesPhone:rssi" }
+Number   JulePhoneUptime     "Jule iPhone: Uptime [%d]"                    { channel="unifi:client:home:julesPhone:uptime" }
+DateTime JulePhoneLastSeen   "Jule iPhone: Last Seen [%1$tH:%1$tM:%1$tS]"  { channel="unifi:client:home:julesPhone:lastSeen" } 

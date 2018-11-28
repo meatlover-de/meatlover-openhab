@@ -1,0 +1,6 @@
+ON=Home
+OFF=Away
+-=Unknown
+NULL=Unknown
+OPEN=Away
+CLOSED=Home

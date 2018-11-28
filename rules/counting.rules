@@ -1,0 +1,20 @@
+import org.joda.time.*
+
+rule "Counting sensors"
+when
+    //         sec min hr  dom mon dow yr
+    Time cron "0 * * * * ?"
+then
+    var door_count = 0
+    gDoorStatus.members.forEach [ item | 
+	door_count++
+    ]
+    gDoorSum.postUpdate(door_count)
+
+    var window_count = 0
+//    gWindowStatus.members.forEach [ item | 
+//	window_count++
+//    ]
+    gWindowSum.postUpdate(window_count)
+end
+

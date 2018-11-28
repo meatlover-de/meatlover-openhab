@@ -1,0 +1,19 @@
+/**
+ * Müllabfuhrtermine prüfen
+ */
+rule "Event_Garbage"
+when
+	Item GlobalGarbageICAL changed
+then
+	//Prüfen ob morgen Mülltermin ansteht
+	if (GlobalGarbageICAL.state != "false" && GlobalGarbageICAL.state != "Uninitialized"){
+		GlobalGarbageCollection.postUpdate(ON)
+		GlobalGarbageName.postUpdate(GlobalGarbageICAL.state)
+		logInfo("HomeBox.SystemRules:Event_Garbage", "GlobalGarbageICAL changed: Updated GarbageCalendar Status: " + GlobalGarbageName.state)
+		sendTelegram("bot1", "Müllabholung ist morgen: " + GlobalGarbageName.state)
+	} else {
+		GlobalGarbageCollection.postUpdate(OFF)
+		GlobalGarbageName.postUpdate("false")
+		logInfo("HomeBox.SystemRules:Event_Garbage", "Updated GarbageCalendar Status: " + GlobalGarbageName.state)
+	}
+end

@@ -1,0 +1,7 @@
+astro:sun:home  [ geolocation="53.276662, 9.722099", interval=300] {
+    Channels:
+        Type rangeEvent : set#event [
+            offset=-30
+        ]
+} 
+astro:moon:home [ geolocation="53.276662, 9.722099", interval=300]

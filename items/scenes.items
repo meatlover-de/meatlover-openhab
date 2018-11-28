@@ -1,0 +1,2 @@
+Switch SceneTvOn "Fernseher" <television-on> ["Switchable"]
+

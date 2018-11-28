@@ -1,0 +1,9 @@
+rule "Es klingelt"
+when
+  Item doorbell_active changed to ON
+then
+  doorbell_active.postUpdate("OFF")
+  //if (push_notifications_active.state == ON) {
+    sendNotification("info@cs-ol.de","Es hat geklingelt! Jemand steht an der Tür!")
+  //}
+end

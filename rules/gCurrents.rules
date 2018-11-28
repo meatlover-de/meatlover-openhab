@@ -1,0 +1,12 @@
+rule "gCurrents changed"
+when
+    Item gCurrents changed
+then
+    logInfo("gcurrents.rules", "gCurrents changed")
+    // sum up all values
+    var sum = 0
+    gCurrents.members.forEach [ item | 
+        sum = sum + item.state 
+    ]
+    gCurrents.postUpdate(sum)
+end

@@ -1,0 +1,9 @@
+String logDoorbellRaw "[%s]" (All) {channel="exec:command:doorbell:output"}
+Switch logDoorbellRunning { channel="exec:command:doorbell:run"}
+Number logDoorbellExitValue {channel="exec:command:doorbell:exit"}
+DateTime logDoorbellLastExecution {channel="exec:command:doorbell:lastexecution"}
+
+String logDoorsRaw "[%s]" (All) {channel="exec:command:doors:output"}
+Switch logDoorsRunning { channel="exec:command:doors:run"}
+Number logDoorsExitValue {channel="exec:command:doors:exit"}
+DateTime logDoorsLastExecution {channel="exec:command:doors:lastexecution"}

@@ -1,0 +1,29 @@
+Group Alexa_Living_Room <player> (gWohnzimmer)
+
+Dimmer Echo_Living_Room_Volume                "Volume [%.0f %%]" <soundvolume>        (Alexa_Living_Room) {channel="amazonechocontrol:echo:account1:echoWohnzimmer:volume"}
+String Echo_Living_Room_TTS                   "Text to Speech"                        (Alexa_Living_Room) {channel="amazonechocontrol:echo:account1:echoWohnzimmer:textToSpeech"}
+String Echo_Living_Room_PlayAlarmSound        "Play Alarm Sound"                      (Alexa_Living_Room) {channel="amazonechocontrol:echo:account1:echoWohnzimmer:playAlarmSound"}
+
+Group Alexa_MasterBedRoom <player> (gSchlafzimmer)
+
+Dimmer Echo_MasterBedRoom_Volume                "Volume [%.0f %%]" <soundvolume>        (Alexa_MasterBedRoom) {channel="amazonechocontrol:echo:account1:echoSchlafzimmer:volume"}
+String Echo_MasterBedRoom_TTS                   "Text to Speech"                        (Alexa_MasterBedRoom) {channel="amazonechocontrol:echo:account1:echoSchlafzimmer:textToSpeech"}
+String Echo_MasterBedRoom_PlayAlarmSound        "Play Alarm Sound"                      (Alexa_MasterBedRoom) {channel="amazonechocontrol:echo:account1:echoSchlafzimmer:playAlarmSound"}
+
+Group Alexa_BadezimmerRoom <player> (gBadezimmer)
+
+Dimmer Echo_BadezimmerRoom_Volume                "Volume [%.0f %%]" <soundvolume>        (Alexa_BadezimmerRoom) {channel="amazonechocontrol:echo:account1:echoBadezimmer:volume"}
+String Echo_BadezimmerRoom_TTS                   "Text to Speech"                        (Alexa_BadezimmerRoom) {channel="amazonechocontrol:echo:account1:echoBadezimmer:textToSpeech"}
+String Echo_BadezimmerRoom_PlayAlarmSound        "Play Alarm Sound"                      (Alexa_BadezimmerRoom) {channel="amazonechocontrol:echo:account1:echoBadezimmer:playAlarmSound"}
+
+Group Alexa_SvenjaRoom <player> (gSvenja)
+
+Dimmer Echo_SvenjaRoom_Volume                "Volume [%.0f %%]" <soundvolume>        (Alexa_SvenjaRoom) {channel="amazonechocontrol:echo:account1:echoSvenja:volume"}
+String Echo_SvenjaRoom_TTS                   "Text to Speech"                        (Alexa_SvenjaRoom) {channel="amazonechocontrol:echo:account1:echoSvenja:textToSpeech"}
+String Echo_SvenjaRoom_PlayAlarmSound        "Play Alarm Sound"                      (Alexa_SvenjaRoom) {channel="amazonechocontrol:echo:account1:echoSvenja:playAlarmSound"}
+
+Group Alexa_JuleRoom <player> (gJule)
+
+Dimmer Echo_JuleRoom_Volume                "Volume [%.0f %%]" <soundvolume>        (Alexa_JuleRoom) {channel="amazonechocontrol:echo:account1:echoJule:volume"}
+String Echo_JuleRoom_TTS                   "Text to Speech"                        (Alexa_JuleRoom) {channel="amazonechocontrol:echo:account1:echoJule:textToSpeech"}
+String Echo_JuleRoom_PlayAlarmSound        "Play Alarm Sound"                      (Alexa_JuleRoom) {channel="amazonechocontrol:echo:account1:echoJule:playAlarmSound"}

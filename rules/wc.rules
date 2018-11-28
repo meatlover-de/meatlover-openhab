@@ -1,0 +1,9 @@
+import org.joda.time.*
+
+rule "WC last update"
+when
+    Item temp1_temp received update
+then
+    var date = new DateTimeType()
+    temp1_lastupdate.postUpdate(date)
+end

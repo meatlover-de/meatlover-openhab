@@ -1,0 +1,6 @@
+Bridge unifi:controller:home "UniFi Controller" [ host="192.168.1.2", port=8443, username="openhab", password="openhab", refresh=10 ] {
+	Thing client udoPhone "Udo iPhone" [ mac="e0:c7:67:17:52:99", considerHome=180 ]
+	Thing client meikePhone "Meike iPhone" [ mac="0c:d7:46:cd:c5:38", considerHome=180 ]
+	Thing client svenjaPhone "Svenja iPhone" [ mac="70:3e:ac:29:2d:d9", considerHome=180 ]
+	Thing client julePhone "Jule iPhone" [ mac="54:72:4f:43:97:92", considerHome=180 ]
+}

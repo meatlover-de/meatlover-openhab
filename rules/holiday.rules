@@ -1,0 +1,25 @@
+/**
+ * Ferien und Feiertage prüfen
+ */
+rule "Event_Holiday"
+when
+	Item GlobalHolidayICAL changed or 
+	Item GlobalSpecialDayICAL changed
+then
+	//Prüfen ob ein Feiertag ist
+	if (GlobalSpecialDayICAL.state != "false" && GlobalSpecialDayICAL.state != "Uninitialized"){
+		postUpdate(GlobalHoliday,ON)
+		postUpdate(GlobalHolidayName,GlobalSpecialDayICAL.state)
+		logInfo("HomeBox.SystemRules:Event_Holiday", "GlobalSpecialDayICAL changed: Updated Holiday Status: " + GlobalHoliday.state + " (" + GlobalHolidayName.state + ")")
+	}
+	// Prüfen ob Ferien sind
+	else if (GlobalHolidayICAL.state != "false" && GlobalHolidayICAL.state != "Uninitialized"){
+		postUpdate(GlobalHoliday,ON)
+		postUpdate(GlobalHolidayName,GlobalHolidayICAL.state)
+		logInfo("HomeBox.SystemRules:Event_Holiday", "GlobalHolidayICAL changed: Updated Holiday Status: " + GlobalHoliday.state + " (" + GlobalHolidayName.state + ")")
+	} else {
+		postUpdate(GlobalHoliday,OFF)
+		postUpdate(GlobalHolidayName,"false")
+		logInfo("HomeBox.SystemRules:Event_Holiday", "Updated Holiday Status: " + GlobalHoliday.state + " (false)")
+	}
+end

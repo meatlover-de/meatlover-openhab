@@ -1,0 +1,45 @@
+Group    iCloud_Group "iPhones"
+
+String   udo_iPhone_BatteryStatus           "Battery Status [%s]"    <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:batteryStatus"}
+String   meike_iPhone_BatteryStatus         "Battery Status [%s]"    <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:batteryStatus"}
+String   svenja_iPhone_BatteryStatus        "Battery Status [%s]"    <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:batteryStatus"}
+String   jule_iPhone_BatteryStatus          "Battery Status [%s]"    <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:batteryStatus"}
+
+Number   udo_iPhone_BatteryLevel            "Battery Level [%d %%]"  <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:batteryLevel"}
+Number   meike_iPhone_BatteryLevel          "Battery Level [%d %%]"  <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:batteryLevel"}
+Number   svenja_iPhone_BatteryLevel         "Battery Level [%d %%]"  <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:batteryLevel"}
+Number   jule_iPhone_BatteryLevel           "Battery Level [%d %%]"  <battery> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:batteryLevel"}
+
+Switch   udo_iPhone_FindMyPhone             "Ton abspielen"                    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:findMyPhone", autoupdate="false"}
+Switch   meike_iPhone_FindMyPhone           "Ton abspielen"                    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:findMyPhone", autoupdate="false"}
+Switch   svenja_iPhone_FindMyPhone          "Ton abspielen"                    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:findMyPhone", autoupdate="false"}
+Switch   jule_iPhone_FindMyPhone            "Ton abspielen"                    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:findMyPhone", autoupdate="false"}
+
+Switch   udo_iPhone_Refresh                 "Force iPhone Refresh"             (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:location", autoupdate="false"}
+Switch   meike_iPhone_Refresh               "Force iPhone Refresh"             (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:location", autoupdate="false"}
+Switch   svenja_iPhone_Refresh              "Force iPhone Refresh"             (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:location", autoupdate="false"}
+Switch   jule_iPhone_Refresh                "Force iPhone Refresh"             (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:location", autoupdate="false"}
+
+Location udo_iPhone_Location                "Coordinates"                      (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:location"}
+Location meike_iPhone_Location              "Coordinates"                      (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:location"}
+Location svenja_iPhone_Location             "Coordinates"                      (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:location"}
+Location jule_iPhone_Location               "Coordinates"                      (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:location"}
+
+Number   udo_iPhone_LocationAccuracy        "Coordinates Accuracy [%.0f m]"    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:locationAccuracy"}
+Number   meike_iPhone_LocationAccuracy      "Coordinates Accuracy [%.0f m]"    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:locationAccuracy"}
+Number   svenja_iPhone_LocationAccuracy     "Coordinates Accuracy [%.0f m]"    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:locationAccuracy"}
+Number   jule_iPhone_LocationAccuracy       "Coordinates Accuracy [%.0f m]"    (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:locationAccuracy"}
+
+DateTime udo_iPhone_LocationLastUpdate      "Last Update [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <time> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Udo_iPhone:locationLastUpdate"}
+DateTime meike_iPhone_LocationLastUpdate    "Last Update [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <time> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Meike_iPhone:locationLastUpdate"}
+DateTime svenja_iPhone_LocationLastUpdate   "Last Update [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <time> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Svenja_iPhone:locationLastUpdate"}
+DateTime jule_iPhone_LocationLastUpdate     "Last Update [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <time> (iCloud_Group) {channel="icloud:device:myaccount:icloud_Jule_iPhone:locationLastUpdate"}
+
+Switch   udo_iPhone_Home                    "Phone Home"            <presence> (iCloud_Group)
+Number   alias_udo_iPhone_Home              "Phone Home"            <presence>
+Switch   meike_iPhone_Home                  "Phone Home"            <presence> (iCloud_Group)
+Number   alias_meike_iPhone_Home            "Phone Home"            <presence>
+Switch   svenja_iPhone_Home                 "Phone Home"            <presence> (iCloud_Group)
+Number   alias_svenja_iPhone_Home           "Phone Home"            <presence>
+Switch   jule_iPhone_Home                   "Phone Home"            <presence> (iCloud_Group)
+Number   alias_jule_iPhone_Home             "Phone Home"            <presence>

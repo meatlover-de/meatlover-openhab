@@ -1,0 +1,26 @@
+import org.joda.time.*
+
+rule "Licht-Wohnzimmer Check"
+when
+    Item CheckTurnOnLivingRoomLights changed to ON
+then
+    if (abendlicht.state == OFF) {
+        // compare if now() is between SunSet and SunRise
+        var DateTime SunSetTime = new DateTime((Sunset_Time.state as DateTimeType).calendar.timeInMillis).plusMinutes(-30)
+        var DateTime SunRiseTime = new DateTime((Sunrise_Time.state as DateTimeType).calendar.timeInMillis).plusMinutes(1440)
+
+        if (now.isAfter(SunSetTime)) {
+            logInfo("check rules", "Jetzt ist nach SunSetTime")
+        }
+        if (now.isBefore(SunRiseTime)) {
+            logInfo("check rules", "Jetzt ist vor SunRiseTime")
+        }
+        if ((now.isAfter(SunSetTime)) && (now.isBefore(SunRiseTime))) {
+            abendlicht.sendCommand("ON")
+            UpdatePresenceLivingRoomTime.postUpdate("240")
+            UpdatePresenceLivingRoom.sendCommand("ON")
+        }
+    }
+    CheckTurnOnLivingRoomLights.postUpdate("OFF")
+end
+

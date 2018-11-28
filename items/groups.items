@@ -1,0 +1,33 @@
+Group gHome
+Group gHouse (gHome)
+Group gAttic "Obergeschoss" <attic> (gHouse)
+Group gGroundfloor "Erdgeschoss" <groundfloor> (gHouse)
+Group gCellar "Keller" <cellar> (gHouse)
+Group gGarden "Garten" <garden> (gHome)
+Group gTerrace "Terasse" <terrace> (gHome)
+Group gGarage "Garage" <garage> (gHome)
+Group gDriveway "Auffahrt" <light> (gHome)
+
+Group gJule			"Jules Geräte" <girl2>
+Group gSvenja			"Svenjas Geräte" <girl3>
+Group gMeike			"Meikes Geräte" <girl3>
+Group gUdo			"Udos Geräte" <boy1>
+
+Group gNetworkDevices		"Netzwerkgeräte" <settings>
+Group gSockets			"Steckdosen" <socket>
+Group gNetwork			"Netzwerk" <network>
+
+Group gWeather			"Wetter" <weather>
+
+Group gGaestewc			"Gäste-WC" <toilette>
+Group gFlur			"Flur" <flur>
+Group gBadezimmer		"Badezimmer" <bath>
+Group gSchlafzimmer		"Schlafzimmer" <sleepingroom>
+Group gGaestezimmer		"Gästezimmer" <sleepingroom>
+Group gWohnzimmer		"Wohnzimmer" <livingroom>
+Group gEsszimmer		"Esszimmer" <diningroom>
+Group gKueche			"Küche" <kitchen>
+Group gWindfang			"Windfang" <corridor>
+
+Group gTemp1			"Temp1"
+

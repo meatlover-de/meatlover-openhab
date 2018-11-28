@@ -1,0 +1,20 @@
+Group elevations
+
+DateTime Sunrise_Time  "Sonnenaufgang [%1$tH:%1$tM]"     { channel="astro:sun:home:rise#start" }
+DateTime Sunset_Time   "Sonnenuntergang [%1$tH:%1$tM]"  { channel="astro:sun:home:set#start" }
+
+Switch Event_Sunrise <sun> { channel="astro:sun:home:rise#start" }
+Switch Event_Sunset <sun> { channel="astro:sun:home:set#start" }
+
+String      Day_Phase            "Phase of Day [MAP(astro.map):%s]"                         (Astro) {channel="astro:sun:home:phase#name"}
+Switch      Night_State          "Night"                                                    (Astro)
+
+String      Season_Name          "Season [MAP(astro.map):%s]"                               (Astro) {channel="astro:sun:home:season#name"}
+String      Zodiac_Sign          "Sternzeichen [MAP(astro.map):%s]"                      <zodiac> (Astro) {channel="astro:sun:home:zodiac#sign"}
+Number:Angle      Sun_Elevation        "Winkel zur Sonne [%.1f °]"                          <sun>    (elevations,Astro) {channel="astro:sun:home:position#elevation"}
+Number:Angle      Moon_Elevation       "Winkel zum Mond [%.1f °]"                         <moon>   (elevations,Astro) {channel="astro:moon:home:position#elevation"}
+String      Moon_Phase           "Mondphase [MAP(astro.map):%s]"                  <moon>   (Astro) {channel="astro:moon:home:phase#name"}
+Number:Length    MoonDistance       "MoonDistance [%.1f %unit%]"              { channel="astro:moon:home:distance#distance" }
+DateTime    Moon_Next_Full       "Nächster Vollmond [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <moon>   (Astro) {channel="astro:moon:home:phase#full"}
+DateTime    Moon_Next_New        "Nächster Neumond [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"  <moon>   (Astro) {channel="astro:moon:home:phase#new"}
+

@@ -1,0 +1,11 @@
+/**
+ * Müllkalender Abfuhrtermine
+ * 1800000
+ */
+String GlobalGarbageICAL
+	{http="<[https://abfallwirtschaft.landkreis-harburg.de/abfallkalender/icalendar/ical.html?id=900000198&gebietOwner=20100&strukturID=1183&year=%1$tY.ics:1800000:JS(muell.js)]"}
+	
+Switch GlobalGarbageCollection
+	"Müllabfuhrtermin [%s]"
+
+String GlobalGarbageName

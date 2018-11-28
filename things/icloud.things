@@ -1,0 +1,7 @@
+Bridge icloud:account:myaccount [appleId="itunes@cs-ol.de", password="Meike!Udo74", refreshTimeInMinutes=10]
+{
+    Thing device icloud_Udo_iPhone "Udo iPhone" @ "World" [deviceId="N6/YfGkS4PPP8IusplrFPToBI+duoLLSifKkk4AsyGZhRqISXmE6YOHYVNSUzmWV"]
+    Thing device icloud_Svenja_iPhone "Svenja iPhone" @ "World" [deviceId="PtkecB5l6NnX6d1k1mvlmIYTnRq8z+p4/XyDrX1PFcMb5dOFw+k8cCjgLByT6nvW9iNEAuSSdFXdY6Nb4ELBSo4DiDVdLLisIHVD4lAqdFoy9fzlt87zYA=="]
+    Thing device icloud_Meike_iPhone "Meike iPhone" @ "World" [deviceId="aE/fqseigerlwJkgj5phQi9ElgWzPG/AP+Z79UZX36qUrIq+eOUlQcBVBp1LtrMA+FR7Htw1Jd/dY6Nb4ELBSgum4TIqAM5V39o0yG+otZoy9fzlt87zYA=="]
+    Thing device icloud_Jule_iPhone "Jule iPhone" @ "World" [deviceId="IiYQb/hgzskAyKQTmS5xFNkfxLsOmmkBFUjHfGUhvjFjyasLFWnfie6xPRJhc1I+nJn6LPZY+UzdY6Nb4ELBSssJDDSAUUnbiFcbb6xrCogy9fzlt87zYA=="]
+}

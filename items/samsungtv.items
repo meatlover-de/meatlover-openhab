@@ -1,0 +1,27 @@
+Dimmer SamsungTV_Volume "Samsung TV - Lautstärke ändern" <soundvolume> {channel="samsungtv:tv:livingroom:volume"}
+Switch SamsungTV_Mute "Samsung TV - Stumm" {channel="samsungtv:tv:livingroom:mute"}
+String SamsungTV_Source_Name "Samsung TV - Quellename" {channel="samsungtv:tv:livingroom:sourceName"}
+Number SamsungTV_Channel "Samsung TV - Kanalnummer" {channel="samsungtv:tv:livingroom:channel"}
+String SamsungTV_Program_Name "Samsung TV - Kanalname" {channel="samsungtv:tv:livingroom:channelName"}
+String SamsungTV_Program_Title "Samsung TV - Programmtitel" {channel="samsungtv:tv:livingroom:programTitle"}
+String SamsungTV_Key_Code "Samsung TV - Funktion aufrufen" {channel="samsungtv:tv:livingroom:keyCode"}
+Switch SamsungTV_Power "Samsung TV - Ausschalten" {channel="samsungtv:tv:livingroom:power"}
+
+Group gSamsungLR "Samsung TV" (gWohnzimmer)
+Switch SamsungTV_power "Samsung TV Power" <tv> (gSamsungLR) { mqtt=">[mqtt-noretain:broadlink/tv/samsung/power:command:*:MAP(broadlink.map)]" }
+Switch SamsungTV_Status <tv> (gPresenceLivingRoom,gSamsungLR) {channel="network:pingdevice:samsungtv:online"}
+DateTime SamsungTV_LastSeen (gPresenceLivingRoom,gSamsungLR) {channel="network:pingdevice:samsungtv:lastseen"}
+Switch SamsungTV_SetInputHdmi3 "Samsung TV HDMI3" <tv> (gSamsungLR) { mqtt=">[mqtt-noretain:broadlink/tv/samsung/hdmi3:command:*:MAP(broadlink.map)]" }
+Switch SamsungTV_mute "TV Ton" <tv> (gSamsungLR) ["Switchable"] { mqtt=">[mqtt-noretain:broadlink/tv/samsung/mute:command:*:MAP(broadlink.map)]" }
+Switch SamsungTV_pause "TV Pause" <tv> (gSamsungLR) ["Switchable"] { mqtt=">[mqtt-noretain:broadlink/tv/samsung/pause:command:*:MAP(broadlink.map)]" }
+
+Group gSky "Sky Receiver" (gWohnzimmer)
+Switch SkyReceiver_power "Sky Receiver" <tv> (gSky) [ "Switchable" ] { mqtt=">[mqtt-noretain:broadlink/tv/sky/power:command:*:MAP(broadlink.map)]" }
+Switch SkyReceiver_skybutton "Sky Button" <tv> (gSky) { mqtt=">[mqtt-noretain:broadlink/tv/sky/sky:command:*:MAP(broadlink.map)]" }
+Switch SkyReceiver_Status <tv> (gPresenceLivingRoom,gSky) {channel="network:pingdevice:skyreceiver:online"}
+DateTime SkyReceiver_LastSeen (gSky) {channel="network:pingdevice:skyreceiver:lastseen"}
+Switch SkyReceiver_pause "Sky Pause" <tv> (gSky) ["Switchable"] { mqtt=">[mqtt-noretain:broadlink/tv/sky/pause:command:ON:MAP(broadlink.map)],>[mqtt-noretain:broadlink/tv/sky/play:command:OFF:MAP(broadlink.map)]" }
+
+
+Group gOnkyoLR "Onkyo Receiver" (gWohnzimmer)
+

@@ -1,0 +1,29 @@
+rule "Fernseher anschalten"
+when
+    Item SceneTvOn changed to ON
+then
+    // check if we have to turn on the lights
+    CheckTurnOnLivingRoomLights.sendCommand("ON")
+    if (SamsungTV_Status.state == OFF) {
+      SamsungTV_power.sendCommand("ON")
+    }
+    if (SkyReceiver_Status.state == OFF) {
+      SkyReceiver_power.sendCommand("ON")
+    } else {
+      SkyReceiver_skybutton.sendCommand("ON")
+    }
+    createTimer(now.plusSeconds(3), [| SamsungTV_SetInputHdmi3.sendCommand("ON")])
+    createTimer(now.plusSeconds(1), [| SamsungTV_SetInputHdmi3.postUpdate("OFF")])
+end
+
+rule "Fernseher aausschalten"
+when
+    Item SceneTvOn changed to OFF
+then
+    if (SamsungTV_Status.state == ON) {
+      SamsungTV_power.sendCommand("OFF")
+    }
+    if (SkyReceiver_Status.state == ON) {
+      SkyReceiver_power.sendCommand("OFF")
+    }
+end

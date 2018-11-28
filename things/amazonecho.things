@@ -1,0 +1,8 @@
+Bridge amazonechocontrol:account:account1 "Amazon Account" @ "Accounts" [amazonSite="amazon.de", email="info@cs-ol.de", password="Meike!Udo74", pollingIntervalInSeconds=300]
+{
+    Thing echo                 echoWohnzimmer          "EchoWohnzimmer" [serialNumber="G090LF1174150HMA"]
+    Thing echo                 echoSchlafzimmer        "EchoSchlafzimmer" [serialNumber="G090LF1072121G6A"]
+    Thing echo                 echoSvenja              "EchoSvenja" [serialNumber="G090LF107207118V"]
+    Thing echo                 echoJule                "EchoJule" [serialNumber="G090LF1181530VGB"]
+    Thing echo                 echoBadezimmer          "EchoBadezimmer" [serialNumber="G090LF118426093S"]
+}

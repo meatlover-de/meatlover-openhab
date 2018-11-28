@@ -1,0 +1,5 @@
+Switch presence_simulation "Anwesenheitssimulation" 
+Switch presence_detection "Anwesenheitserkennung"
+Group gPresence
+Group gPresenceLivingRoom (gPresence)
+DateTime presenceLivingRoomTime "Ablaufzeit [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <clock>

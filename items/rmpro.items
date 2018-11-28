@@ -1,0 +1,4 @@
+Group gRMPRO "RMPRO" (gWohnzimmer)
+Switch RMPRO_Status <tv> (gRMPRO) {channel="network:pingdevice:rmpro:online"}
+DateTime RMPRO_LastSeen (gRMPRO) {channel="network:pingdevice:rmpro:lastseen"}
+

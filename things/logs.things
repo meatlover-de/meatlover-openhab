@@ -1,0 +1,2 @@
+Thing exec:command:logDoorbell [command="/usr/local/bin/readloghead.sh /etc/openhab2/logs/doorbell.txt 100 > /var/www/html/weblogs/doorbell.txt", interval=5, timeout=2]
+Thing exec:command:logDoors [command="/usr/local/bin/readloghead.sh /etc/openhab2/logs/doors.txt 200 > /var/www/html/weblogs/doors.txt", interval=5, timeout=2]
