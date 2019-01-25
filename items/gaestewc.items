@@ -1,3 +1,0 @@
-Switch gaestewc_airswitch 	"Lüftung" 			<fan> 		{mqtt="<[mqtt:switch/gaestewc/air:state:default], >[mqtt:switch/gaestewc/air:command:*:default]"}
-Number gaestewc_temp 		"Temperatur [%d °C]" 		<temperature> 		{mqtt="<[mqtt:sensor/gaestewc/temp:state:default]"}
-Number gaestewc_humidity 	"Luftfeuchtigkeit [%d %%]"	<humidity>		{mqtt="<[mqtt:sensor/gaestewc/humidity:state:default]"}

@@ -6,7 +6,6 @@ then
         var DateTime StartTime = new DateTime((SamsungTV_LastSeen.state as DateTimeType).calendar.timeInMillis)
         var DateTime EndTime = StartTime.plusMinutes(10)
         presenceLivingRoomTime.postUpdate(new DateTimeType(EndTime.toCalendar(null)))
-        logInfo("presence.rules","Updated presence time for LivingRoom")
         // Nur Textanzeige aktualisieren
         SamsungTV_power.postUpdate("ON")
     }

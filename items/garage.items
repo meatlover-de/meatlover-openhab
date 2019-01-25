@@ -1,0 +1,9 @@
+Switch garage_airswitch 	"Lüftung" 			<fan> 		{mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/garage:command:*:default]"}
+Number garage_temp 		"Temperatur [%d °C]" 		<temperature> 		{mqtt="<[mqtt:tele/garage/SENSOR:state:JSONPATH($.DHT11.Temperature)]"}
+Number garage_solltemp 		"Solltemperatur [%d °C]" 		<temperature>
+Number garage_humidity 	"Luftfeuchtigkeit [%d %%]"	<humidity>		{mqtt="<[mqtt:tele/garage/SENSOR:state:JSONPATH($.DHT11.Humidity)]"}
+Number garage_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garage_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime garage_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.Time)]"}
+String garage_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garage/INFO1:state:JSONPATH($.Version)]"}
+

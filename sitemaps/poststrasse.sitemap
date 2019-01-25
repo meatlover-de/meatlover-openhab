@@ -3,8 +3,8 @@ sitemap poststrasse label="Poststr. 47" {
         Group item=gStatus {
             Group item=gBatteryStatus {
                 Group item=temp2_vcc label="Terassensensor [%.3f]" {
-                Text item=temp2_vcc_status label="Terassensensor [%.3f]"
-                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                    Text item=temp2_vcc_status label="Terassensensor [%.3f]"
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                         Chart item=temp2_vcc period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
                         Chart item=temp2_vcc period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
                         Chart item=temp2_vcc period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
@@ -20,20 +20,28 @@ sitemap poststrasse label="Poststr. 47" {
                 }
                 Frame label="Türstatus" {
                     Default item=frontdoor
-                    Default item=flurdoor
+                        Default item=flurdoor
                 }
             }
             Group item=gWindowStatus {
                 Default item=empty_item
             }
-                Group item=gMotion {
-                    Default item=temp1_motion label="Bewegung im Haupt-Bad"
-                }
+            Group item=gMotion {
+                Default item=temp1_motion label="Bewegung im Haupt-Bad"
+            }
             Default item=gWater
                 Default item=gCo2
                 Default item=gGas
                 Default item=gLight
                 Group item=gCurrentsSum label="Stromaufnahme [%.3f A]" {
+                    Text item=garagenheizung_current label="Garagenheizung [%.3f A]" {
+                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                            Chart item=garagenheizung_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                            Chart item=garagenheizung_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                            Chart item=garagenheizung_current period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                            Chart item=garagenheizung_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                            Chart item=garagenheizung_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                    }
                     Text item=froster_current label="Froster Küche [%.3f A]" {
                         Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                             Chart item=froster_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
@@ -66,7 +74,7 @@ sitemap poststrasse label="Poststr. 47" {
                             Chart item=heizung_current period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
                             Chart item=heizung_current period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                     }
-                    Text item=server_current label="Heizung [%.3f A]" {
+                    Text item=server_current label="Server [%.3f A]" {
                         Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                             Chart item=server_current period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
                             Chart item=server_current period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
@@ -82,6 +90,14 @@ sitemap poststrasse label="Poststr. 47" {
                         Chart item=gCurrents period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                 }
             Group item=gPowerSum label="Leistungsaufnahme [%d W]" {
+                Text item=garagenheizung_power label="Garagenheizung [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=garagenheizung_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=garagenheizung_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=garagenheizung_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=garagenheizung_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=garagenheizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
                 Text item=froster_power label="Froster Küche [%d W]" {
                     Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                         Chart item=froster_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
@@ -114,7 +130,7 @@ sitemap poststrasse label="Poststr. 47" {
                         Chart item=heizung_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
                         Chart item=heizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                 }
-                Text item=server_power label="Heizung [%d W]" {
+                Text item=server_power label="Server [%d W]" {
                     Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                         Chart item=server_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
                         Chart item=server_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
@@ -131,7 +147,7 @@ sitemap poststrasse label="Poststr. 47" {
             }
         }
         Group item=gLights label="Licht" {
-                Default item=abendlicht
+            Default item=abendlicht
                 Default item=schlafzimmer
         }
     }
@@ -204,24 +220,20 @@ sitemap poststrasse label="Poststr. 47" {
                 Default item=groundfloor_object
             }
             Frame label="Licht" {
-                    Default item=abendlicht
-                        Default item=schlafzimmer
-            }
-            Frame label="Lüftung" {
-                Default item=temp1_relay label="Lüfter WC"
-                    Default item=temp3_airswitch label="Lüfter Gäste-WC"
+                Default item=abendlicht
+                    Default item=schlafzimmer
             }
             Frame label="Räume" {
                 Group item=gWindfang label="Windfang" {
                     Default item=frontdoor
                         Default item=doorbell
-                    Text item=doorbell_active
-                    Default item=doorbell_active_time
-                    Default item=doorbell_status
-                    Default item=doorbell_status_time
+                        Text item=doorbell_active
+                        Default item=doorbell_active_time
+                        Default item=doorbell_status
+                        Default item=doorbell_status_time
                 }
                 Group item=gFlur label="Flur" {
-                        Default item=flurdoor
+                    Default item=flurdoor
                         Group item=flur_temp {
                             Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                                 Chart item=flur_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
@@ -248,27 +260,7 @@ sitemap poststrasse label="Poststr. 47" {
                     }
                 }
                 Group item=gGaestewc label="Gäste-WC" icon="toilet" {
-                    Frame label="Status" {
-                        Group item=temp3_temp {
-                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
-                                Chart item=temp3_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
-                                Chart item=temp3_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
-                                Chart item=temp3_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
-                                Chart item=temp3_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
-                                Chart item=temp3_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
-                        }
-                        Group item=temp3_humi {
-                            Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
-                                Chart item=temp3_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
-                                Chart item=temp3_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
-                                Chart item=temp3_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
-                                Chart item=temp3_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
-                                Chart item=temp3_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
-                        }
-                    }
-                    Frame label="Schalter" {
-                        Default item=temp3_airswitch
-                    }
+                    Default item=empty_item
                 }
                 Group item=gBadezimmer label="Badezimmer" {
                     Frame label="Status" {
@@ -338,30 +330,30 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=empty_item
                         }
                         Group item=gRMPRO {
-                                Text item=RMPRO_Status label="RMPRO [MAP(on_off.map):%s]"
+                            Text item=RMPRO_Status label="RMPRO [MAP(on_off.map):%s]"
                                 Default item=RMPRO_LastSeen label="Zuletzt online [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]"
                         }
                     }
                     Frame label="Alexa" {
                         Group item=empty_item label="Wohnzimmer" {
                             Slider    item=Echo_Living_Room_Volume
-                            Selection item=Echo_Living_Room_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                                Selection item=Echo_Living_Room_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
                         }
                         Group item=empty_item label="Schlafzimmer" {
                             Slider    item=Echo_MasterBedRoom_Volume
-                            Selection item=Echo_MasterBedRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                                Selection item=Echo_MasterBedRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
                         }
                         Group item=empty_item label="Badezimmer" {
                             Slider    item=Echo_BadezimmerRoom_Volume
-                            Selection item=Echo_BadezimmerRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                                Selection item=Echo_BadezimmerRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
                         }
                         Group item=empty_item label="Svenja" {
                             Slider    item=Echo_SvenjaRoom_Volume
-                            Selection item=Echo_SvenjaRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                                Selection item=Echo_SvenjaRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
                         }
                         Group item=empty_item label="Jule" {
                             Slider    item=Echo_JuleRoom_Volume
-                            Selection item=Echo_JuleRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
+                                Selection item=Echo_JuleRoom_PlayAlarmSound mappings=[ ''='None', 'ECHO:system_alerts_soothing_01'='Adrift', 'ECHO:system_alerts_atonal_02'='Clangy']
                         }
                     }
                 }
@@ -645,7 +637,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Default item=empty_item label="Ventilator 2" icon="fan"
             }
             Frame label="Sensoren" {
-
                 Group item=temp2_temp {
                     Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                         Chart item=temp2_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
@@ -670,7 +661,7 @@ sitemap poststrasse label="Poststr. 47" {
                         Chart item=temp2_pres period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
                         Chart item=temp2_pres period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                 }
-                Group item=temp2_vcc label="Terassensensor [%.3f]" {
+                Group item=temp2_vcc label="Batterie [%.3f V]" {
                     Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                         Chart item=temp2_vcc period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
                         Chart item=temp2_vcc period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
@@ -678,14 +669,51 @@ sitemap poststrasse label="Poststr. 47" {
                         Chart item=temp2_vcc period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
                         Chart item=temp2_vcc period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                 }
-                Default item=temp2_vcc_percent label="Terassensensor [%d %%]"
+                Group item=temp2_vcc_percent label="Batterie [%d %%]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=temp2_vcc_percent period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=temp2_vcc_percent period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=temp2_vcc_percent period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=temp2_vcc_percent period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=temp2_vcc_percent period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
             }
         }
         Group item=gGarden label="Garten" icon="garden" {
             Default item=garden_object
         }
         Group item=gGarage label="Garage" icon="garage" {
-            Default item=garage_object
+            Frame label="Status" {
+                Default item=garagenheizung
+                Text item=garagenheizung_power label="Leistung Heizung [%d W]" {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=garagenheizung_power period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=garagenheizung_power period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=garagenheizung_power period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=garagenheizung_power period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=garagenheizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+            }
+            Frame label="Sensoren" {
+                Selection item=garage_solltemp mappings=['5'='5 °C','6'='6 °C','7'='7 °C','8'='8 °C','9'='9 °C','10'='10 °C','11'='11 °C','12'='12 °C','13'='13 °C','14'='14 °C','15'='15 °C']
+                Group item=garage_temp {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=garage_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=garage_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=garage_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=garage_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=garage_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Group item=garage_humidity {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=garage_humidity period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=garage_humidity period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=garage_humidity period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=garage_humidity period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=garage_humidity period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Default item=garage_lastupdate
+            }
         }
         Group item=gDriveway label="Auffahrt" icon="outdoorlight" {
             Default item=driveway_object
@@ -853,13 +881,14 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=temp2_lastupdate
                             Default item=temp2_ip
                     }
-                    Frame label="Temp GästeWC" {
-                        Default item=temp3_temp
-                            Default item=temp3_humi
-                            Default item=temp3_rssi
-                            Default item=temp3_mac
-                            Default item=temp3_lastupdate
-                            Default item=temp3_firmware
+                    Frame label="Garage" {
+                        Default item=garage_temp
+                            Default item=garage_humidity
+                            Default item=garage_airswitch
+                            Default item=garage_rssi
+                            Default item=garage_mac
+                            Default item=garage_lastupdate
+                            Default item=garage_ip
                     }
                 }
                 Group item=gSockets {
@@ -988,6 +1017,20 @@ sitemap poststrasse label="Poststr. 47" {
                             Text item=schlafzimmer_voltage
                             Text item=schlafzimmer_current
                     }
+                    Frame label="Garagenheizung" {
+                        Switch item=garagenheizung
+                            Text item=garagenheizung_rssi
+                            Text item=garagenheizung_mac
+                            Text item=garagenheizung_lastupdate
+                            Text item=garagenheizung_firmware
+                            Text item=garagenheizung_total
+                            Text item=garagenheizung_yesterday
+                            Text item=garagenheizung_today
+                            Text item=garagenheizung_power
+                            Text item=garagenheizung_factor
+                            Text item=garagenheizung_voltage
+                            Text item=garagenheizung_current
+                    }
                 }
             }
             Frame label="Informationen" {
@@ -995,7 +1038,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Text item=abendlicht_rssi label="Treppenlicht [%d %%]"
                         Default item=temp1_rssi label="Badezimmer [%d %%]"
                         Default item=temp2_rssi label="Terasse [%d %%]"
-                        Default item=temp3_rssi label="Gäste-WC [%d %%]"
                         Default item=kfroster_rssi label="Froster Keller [%d %%]"
                         Default item=froster_rssi label="Froster Küche [%d %%]"
                         Default item=heizung_rssi label="Heizung [%d %%]"
@@ -1004,6 +1046,7 @@ sitemap poststrasse label="Poststr. 47" {
                         Default item=server_rssi label="IT-Schrank [%d %%]"
                         Default item=sonoff3_rssi label="Sonoff3 [%d %%]"
                         Default item=schlafzimmer_rssi label="Schlafzimmer [%d %%]"
+                        Default item=garagenheizung_rssi label="Schlafzimmer [%d %%]"
                 }
                 Group item=empty_item label="Tasmota Firmware" {
                     Frame label="Firmware Status" {
@@ -1011,7 +1054,6 @@ sitemap poststrasse label="Poststr. 47" {
                     }
                     Frame label="Geräte" {
                         Text item=abendlicht_firmware label="Treppenlicht [%s]"
-                            Default item=temp3_firmware label="Gäste-WC [%s]"
                             Default item=kfroster_firmware label="Froster Keller [%s]"
                             Default item=froster_firmware label="Froster Küche [%s]"
                             Default item=heizung_firmware label="Heizung [%s]"
@@ -1020,6 +1062,7 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=server_firmware label="IT-Schrank [%s]"
                             Default item=sonoff3_firmware label="Sonoff3 [%s]"
                             Default item=schlafzimmer_firmware label="Schlafzimmer [%s]"
+                            Text item=garagenheizung_firmware label="Treppenlicht [%s]"
                     }
                 }
             }
@@ -1050,50 +1093,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Moon_Phase == THIRD_QUARTER,
                     Moon_Phase == WANING_CRESCENT,
                     Moon_Phase == NEW]
-            }
-            Frame label="Wetter" {
-                Text item=Condition label="Tostedt" {
-                    Frame label="Temperatur" {
-                        Text item=Temperature
-                    }
-                    Frame label="Atmosphäre" {
-                        Text item=Humidity        
-                            Text item=Visibility      
-                            Text item=Pressure        
-                    }
-                    Frame label="condition" {
-                        Text item=Condition
-                            Text item=Condition_ID
-                            Text item=ObservationTime
-                            Text item=LastUpdate
-                            Text item=CommonId
-                    }
-                    Frame label="precipitation" {
-                        Text item=Rain
-                            Text item=Snow
-                    }
-                    Frame label="temperature" {
-                        Text item=Temperature
-                            Text item=Temp_Feel
-                    }
-                    Frame label="wind" {
-                        Text item=Wind_Speed
-                            Text item=Wind_Direction
-                            Text item=Wind_Degree
-                            Text item=Wind_Chill
-                    }
-
-                    Frame label="forecast 1 day" {
-                        Text item=Temp_MinMax_1
-                            Text item=Temp_MinMax_2
-                            Text item=Temp_MinMax_3
-                            Text item=Temp_MinMax_4
-                            Text item=Temp_MinMax_5
-                            Text item=Temp_Min_1
-                            Text item=Temp_Max_1
-                    }
-
-                }
             }
         }
         Group item=empty_item label="Einstellungen" icon="settings" {
@@ -1165,19 +1164,19 @@ sitemap poststrasse label="Poststr. 47" {
         Group item=empty_item label="Logs" icon="file" {
             Group item=empty_item label="Türklingel" icon="doorbell" {
                 Default item=logDoorbellRaw
-                Default item=logDoorbellRunning
-                Default item=logDoorbellExitValue
-                Default item=logDoorbellLastExecution
+                    Default item=logDoorbellRunning
+                    Default item=logDoorbellExitValue
+                    Default item=logDoorbellLastExecution
 
-                Webview url="http://192.168.1.25/weblogs/doorbell.txt" height=20
+                    Webview url="http://192.168.1.25/weblogs/doorbell.txt" height=20
             }
             Group item=empty_item label="Türen" icon="door" {
                 Default item=logDoorsRaw
-                Default item=logDoorsRunning
-                Default item=logDoorsExitValue
-                Default item=logDoorsLastExecution
-                
-                Webview url="http://192.168.1.25/weblogs/door.txt" height=20
+                    Default item=logDoorsRunning
+                    Default item=logDoorsExitValue
+                    Default item=logDoorsLastExecution
+
+                    Webview url="http://192.168.1.25/weblogs/door.txt" height=20
             }
         }
     }

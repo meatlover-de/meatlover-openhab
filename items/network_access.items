@@ -5,3 +5,4 @@ Switch jule_internet_access   "Internet Jule"
 
 Number internet_startzeit "Startzeit [%d Uhr]" <time>
 Number internet_endzeit "Endzeit [%d Uhr]" <time>
+

@@ -3,30 +3,14 @@ String Sonoff_Current_FW_Available "Current Release [%s]" <sonoff_basic> { http=
 Group gCurrents <current>
 Group:Number:SUM gCurrentsSum "Gesamt [%.3f A]" <current> (gCurrents)
 Group gPower <power>
-Group:Number:SUM gPowerSum "Gesamt [%d W]" <power> (gPower)
+Group:Number:SUM gPowerSum "Gesamt [%d W]" <energy> (gPower)
 
 // Funktion
-Switch abendlicht "Abendlicht" <poweroutlet> (gSockets) ["Lighting"] {mqtt="<[mqtt:tele/abendlicht/POWER1:state:default], >[mqtt:cmnd/abendlicht/power:command:*:default]"}
+Switch abendlicht "Abendlicht" <poweroutlet> (gSockets) ["Lighting"] {mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/abendlicht/power:command:*:default]"}
 Number abendlicht_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.Wifi.RSSI)]" }
 String abendlicht_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.Wifi.APMac)]"}
 DateTime abendlicht_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.Time)]"}
 String abendlicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/abendlicht/INFO1:state:JSONPATH($.Version)]"}
-Number abendlicht_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
-Number abendlicht_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
-Number abendlicht_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number abendlicht_power "Waschmaschinen [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
-Number abendlicht_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
-Number abendlicht_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
-Number abendlicht_current "Waschmaschinen [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/abendlicht/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
-
-// Funktion
-Number temp3_temp "Temperatur [%.1f °C]" <temperature> { mqtt="<[mqtt:tele/gaestewc/SENSOR:state:JSONPATH($.DHT11.Temperature)]" }
-Number temp3_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> { mqtt="<[mqtt:tele/gaestewc/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }
-Switch temp3_airswitch "Lüfter" <fan> ["Switchable"] {mqtt="<[mqtt:stat/gaestewc/POWER:state:default], >[mqtt:cmnd/gaestewc/power:command:*:default]"}
-Number temp3_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/gaestewc/STATE:state:JSONPATH($.Wifi.RSSI)]" }
-String temp3_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/gaestewc/STATE:state:JSONPATH($.Wifi.APMac)]"}
-DateTime temp3_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/gaestewc/STATE:state:JSONPATH($.Time)]"}
-String temp3_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/gaestewc/INFO1:state:JSONPATH($.Version)]"}
 
 // Funktion
 Switch kfroster "Froster Keller" <poweroutlet> (gSockets) {mqtt="<[mqtt:tele/kfroster/POWER:state:default], >[mqtt:cmnd/kfroster/power:command:*:default]"}
@@ -37,7 +21,7 @@ String kfroster_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/kfroster/INFO1:stat
 Number kfroster_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Total)]" }
 Number kfroster_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Yesterday)]" }
 Number kfroster_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Today)]" }
-Number kfroster_power "Froster Keller [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Power)]" }
+Number kfroster_power "Froster Keller [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Power)]" }
 Number kfroster_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Factor)]" }
 Number kfroster_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Voltage)]" }
 Number kfroster_current "Froster Keller [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/kfroster/ENERGY:state:JSONPATH($.Current)]" }
@@ -51,7 +35,7 @@ String froster_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/froster/INFO1:state:
 Number froster_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Total)]" }
 Number froster_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Yesterday)]" }
 Number froster_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Today)]" }
-Number froster_power "Froster Küche [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Power)]" }
+Number froster_power "Froster Küche [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Power)]" }
 Number froster_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Factor)]" }
 Number froster_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Voltage)]" }
 Number froster_current "Froster Küche [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/froster/ENERGY:state:JSONPATH($.Current)]" }
@@ -65,7 +49,7 @@ String heizung_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/heizung/INFO1:state:
 Number heizung_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Total)]" }
 Number heizung_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Yesterday)]" }
 Number heizung_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Today)]" }
-Number heizung_power "Heizung [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Power)]" }
+Number heizung_power "Heizung [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Power)]" }
 Number heizung_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Factor)]" }
 Number heizung_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Voltage)]" }
 Number heizung_current "Heizung [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/heizung/ENERGY:state:JSONPATH($.Current)]" }
@@ -79,7 +63,7 @@ String waesche_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/waesche/INFO1:state:
 Number waesche_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Total)]" }
 Number waesche_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Yesterday)]" }
 Number waesche_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Today)]" }
-Number waesche_power "Waschmaschine [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Power)]" }
+Number waesche_power "Waschmaschine [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Power)]" }
 Number waesche_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Factor)]" }
 Number waesche_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Voltage)]" }
 Number waesche_current "Waschmaschine [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/waesche/ENERGY:state:JSONPATH($.Current)]" }
@@ -93,7 +77,7 @@ String sonoff1_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/sonoff1/INFO1:state:
 Number sonoff1_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
 Number sonoff1_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
 Number sonoff1_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number sonoff1_power "Sonoff1 [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number sonoff1_power "Sonoff1 [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
 Number sonoff1_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
 Number sonoff1_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
 Number sonoff1_current "Sonoff1 [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/sonoff1/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
@@ -107,7 +91,7 @@ String server_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/server/INFO1:state:JS
 Number server_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
 Number server_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
 Number server_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number server_power "IT-Schrank [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number server_power "IT-Schrank [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
 Number server_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
 Number server_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
 Number server_current "Server [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/server/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
@@ -121,7 +105,7 @@ String sonoff3_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/sonoff3/INFO1:state:
 Number sonoff3_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
 Number sonoff3_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
 Number sonoff3_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number sonoff3_power "Sonoff3 [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number sonoff3_power "Sonoff3 [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
 Number sonoff3_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
 Number sonoff3_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
 Number sonoff3_current "Sonoff3 [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
@@ -135,7 +119,23 @@ String schlafzimmer_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/schlafzimmer/IN
 Number schlafzimmer_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
 Number schlafzimmer_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
 Number schlafzimmer_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number schlafzimmer_power "Schlafzimmer [%d W]" (gPower,gPowerSum) { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number schlafzimmer_power "Schlafzimmer [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
 Number schlafzimmer_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
 Number schlafzimmer_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
 Number schlafzimmer_current "Schlafzimmer [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/schlafzimmer/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
+
+
+// Funktion
+Switch garagenheizung "Garagenheizung" <poweroutlet> (gSockets) ["Lighting"] {mqtt="<[mqtt:tele/garagenheizung/POWER1:state:default], >[mqtt:cmnd/garagenheizung/power:command:*:default]"}
+Number garagenheizung_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garagenheizung/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garagenheizung_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garagenheizung/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime garagenheizung_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garagenheizung/STATE:state:JSONPATH($.Time)]"}
+String garagenheizung_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garagenheizung/INFO1:state:JSONPATH($.Version)]"}
+Number garagenheizung_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
+Number garagenheizung_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
+Number garagenheizung_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
+Number garagenheizung_power "Garagenheizung [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number garagenheizung_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
+Number garagenheizung_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
+Number garagenheizung_current "Garagenheizung [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
+
