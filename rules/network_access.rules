@@ -11,12 +11,17 @@ then
 
     if (GlobalHoliday.state == ON) {
         // Es sind Ferien
-        freischalten = 8
-        blockieren = 23
+        if (dayofweek == 7) {     // SO
+            freischalten = 8
+            blockieren = 21
+        } else {
+            freischalten = 8
+            blockieren = 22
+        }
     } else {
         if (dayofweek < 5) {     // MO-DO
             freischalten = 17
-            blockieren = 21
+            blockieren = 20
         }
         if (dayofweek == 5) {     // FR
             freischalten = 14
@@ -28,7 +33,7 @@ then
         }
         if (dayofweek == 7) {     // SO
             freischalten = 8
-            blockieren = 21
+            blockieren = 20
         }
     }
     internet_startzeit.postUpdate(freischalten)

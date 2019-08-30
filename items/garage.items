@@ -1,4 +1,4 @@
-Switch garage_airswitch 	"Lüftung" 			<fan> 		{mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/garage:command:*:default]"}
+Switch garagelicht1 	"Garage Hauptlicht"		<light> (gLights) 		{mqtt="<[mqtt:stat/garage/RESULT:state:JSONPATH($.POWER)], >[mqtt:cmnd/garage/POWER:command:*:default]"}
 Number garage_temp 		"Temperatur [%d °C]" 		<temperature> 		{mqtt="<[mqtt:tele/garage/SENSOR:state:JSONPATH($.DHT11.Temperature)]"}
 Number garage_solltemp 		"Solltemperatur [%d °C]" 		<temperature>
 Number garage_humidity 	"Luftfeuchtigkeit [%d %%]"	<humidity>		{mqtt="<[mqtt:tele/garage/SENSOR:state:JSONPATH($.DHT11.Humidity)]"}
@@ -6,4 +6,39 @@ Number garage_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garage/STATE:state:JSONPAT
 String garage_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.Wifi.APMac)]"}
 DateTime garage_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garage/STATE:state:JSONPATH($.Time)]"}
 String garage_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garage/INFO1:state:JSONPATH($.Version)]"}
+
+// Funktion
+Number garageschalter1_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garageschalter1_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.Wifi.BSSId)]"}
+DateTime garageschalter1_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.Time)]"}
+String garageschalter1_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garageschalter1/INFO1:state:JSONPATH($.Version)]"}
+
+
+Switch garageschalter1_licht1 {mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.POWER1)],<[mqtt:stat/garageschalter1/POWER1:state:default],>[mqtt:cmnd/garageschalter1/POWER1:command:*:default]"}
+Switch garageschalter1_licht2 {mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.POWER2)],<[mqtt:stat/garageschalter1/POWER2:state:default],>[mqtt:cmnd/garageschalter1/POWER2:command:*:default]"}
+Switch garageschalter1_licht3 {mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.POWER3)],<[mqtt:stat/garageschalter1/POWER3:state:default],>[mqtt:cmnd/garageschalter1/POWER3:command:*:default]"}
+Switch garageschalter1_abluft {mqtt="<[mqtt:tele/garageschalter1/STATE:state:JSONPATH($.POWER4)],<[mqtt:stat/garageschalter1/POWER4:state:default],>[mqtt:cmnd/garageschalter1/POWER4:command:*:default]"}
+
+Number garagelicht1_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garagelicht1/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garagelicht1_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garagelicht1/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime garagelicht1_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garagelicht1/STATE:state:JSONPATH($.Time)]"}
+String garagelicht1_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garagelicht1/INFO1:state:JSONPATH($.Version)]"}
+
+Switch garagelicht2 "Garage Werklicht" <light> (gLights) {mqtt="<[mqtt:tele/garagelicht2/STATE:state:JSONPATH($.POWER)],>[mqtt:cmnd/garagelicht2/POWER:command:*:default]"}
+Number garagelicht2_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garagelicht2/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garagelicht2_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garagelicht2/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime garagelicht2_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garagelicht2/STATE:state:JSONPATH($.Time)]"}
+String garagelicht2_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garagelicht2/INFO1:state:JSONPATH($.Version)]"}
+
+Switch garagelicht3 "Garage Licht Abstellraum" <light> (gLights) {mqtt="<[mqtt:tele/garagelicht3/STATE:state:JSONPATH($.POWER)],>[mqtt:cmnd/garagelicht3/POWER:command:*:default]"}
+Number garagelicht3_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garagelicht3/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String garagelicht3_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garagelicht3/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime garagelicht3_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garagelicht3/STATE:state:JSONPATH($.Time)]"}
+String garagelicht3_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garagelicht3/INFO1:state:JSONPATH($.Version)]"}
+
+Switch abluft "Garage Abluftanlage" <fan> {mqtt="<[mqtt:tele/garageabluft/STATE:state:JSONPATH($.POWER)],>[mqtt:cmnd/garageabluft/POWER:command:*:default]"}
+Number abluft_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/abluft/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+String abluft_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/abluft/STATE:state:JSONPATH($.Wifi.APMac)]"}
+DateTime abluft_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/abluft/STATE:state:JSONPATH($.Time)]"}
+String abluft_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/abluft/INFO1:state:JSONPATH($.Version)]"}
 

@@ -5,7 +5,7 @@ when
     Channel 'astro:sun:home:set#event' triggered START
 then
     abendlicht.sendCommand("ON")
-    UpdatePresenceLivingRoomTime.postUpdate(240)
+    UpdatePresenceLivingRoomTime.postUpdate(180)
     UpdatePresenceLivingRoom.sendCommand("ON")
     //CheckTurnOnLivingRoomLights.sendCommand("ON")
 end
@@ -16,7 +16,7 @@ when
 then
     // do not use CheckTurnOnLivingRoomLights to allow light whenever the user wants it
     abendlicht.sendCommand("ON")
-    UpdatePresenceLivingRoomTime.postUpdate(240)
+    UpdatePresenceLivingRoomTime.postUpdate(180)
     UpdatePresenceLivingRoom.sendCommand("ON")
 end
 

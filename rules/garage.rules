@@ -19,3 +19,29 @@ then
         }
     }
 end
+
+rule "Garagenlicht 1"
+when
+    Item garageschalter1_licht1 received update
+then
+    if ( garageschalter1_licht1.state == ON) {
+        sendCommand(garagelicht1,ON)
+        logInfo("garage.rules","Schalte Garagenlicht1 an")
+    } else {
+        sendCommand(garagelicht1,OFF)
+        logInfo("garage.rules","Schalte Garagenlicht1 aus")
+    }
+end
+
+rule "Garagenlicht 2"
+when
+    Item garageschalter1_licht2 received update
+then
+    if ( garageschalter1_licht2.state == ON) {
+        sendCommand(garagelicht2,ON)
+        logInfo("garage.rules","Schalte Garagenlicht1 an")
+    } else {
+        sendCommand(garagelicht2,OFF)
+        logInfo("garage.rules","Schalte Garagenlicht1 aus")
+    }
+end

@@ -93,7 +93,7 @@ var holiday = false;
 	function calenDate(icalStr)  {
 		var strYear = icalStr.substr(0,4);
 		var strMonth = parseInt(icalStr.substr(4,2),10)-1;
-		var strDay = icalStr.substr(6,2);
+		var strDay = parseInt(icalStr.substr(6,2))+1;
 		var strHour = 0;
 		var strMin = 0;
 		var strSec = 0;

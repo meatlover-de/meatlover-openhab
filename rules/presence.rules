@@ -25,3 +25,14 @@ then
 end
 
 
+rule "Presence Detection"
+when
+    Item frontdoor changed
+then
+    if (presence_detection.state == ON) {
+    if (frontdoor.state == OPEN) {
+        sendNotification("info@cs-ol.de", "Eingangstür wurde geöffnet")
+    }
+    }
+end
+

@@ -149,6 +149,9 @@ sitemap poststrasse label="Poststr. 47" {
         Group item=gLights label="Licht" {
             Default item=abendlicht
                 Default item=schlafzimmer
+                Default item=garagelicht1
+                Default item=garagelicht2
+                Default item=garagelicht3
         }
     }
     Frame label="Internet" {
@@ -694,6 +697,18 @@ sitemap poststrasse label="Poststr. 47" {
                         Chart item=garagenheizung_power period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                 }
             }
+            Frame label="Licht" {
+                Default item=garagelicht1
+                Default item=garagelicht2
+                Default item=garagelicht3
+                Default item=abluft
+            }
+            Frame label="Schalter" {
+                Default item=garageschalter1_licht1
+                Default item=garageschalter1_licht2
+                Default item=garageschalter1_licht3
+                Default item=garageschalter1_abluft
+            }
             Frame label="Sensoren" {
                 Selection item=garage_solltemp mappings=['5'='5 °C','6'='6 °C','7'='7 °C','8'='8 °C','9'='9 °C','10'='10 °C','11'='11 °C','12'='12 °C','13'='13 °C','14'='14 °C','15'='15 °C']
                 Group item=garage_temp {
@@ -897,13 +912,18 @@ sitemap poststrasse label="Poststr. 47" {
                             Text item=abendlicht_mac
                             Text item=abendlicht_lastupdate
                             Text item=abendlicht_firmware
-                            Text item=abendlicht_total
-                            Text item=abendlicht_yesterday
-                            Text item=abendlicht_today
-                            Text item=abendlicht_power
-                            Text item=abendlicht_factor
-                            Text item=abendlicht_voltage
-                            Text item=abendlicht_current
+                    }
+                    Frame label="Garagelicht 2" {
+                        Text item=garagelicht2_rssi
+                            Text item=garagelicht2_mac
+                            Text item=garagelicht2_lastupdate
+                            Text item=garagelicht2_firmware
+                    }
+                    Frame label="Garagelicht 2" {
+                        Text item=garagelicht2_rssi
+                            Text item=garagelicht2_mac
+                            Text item=garagelicht2_lastupdate
+                            Text item=garagelicht2_firmware
                     }
                     Frame label="Froster Keller" {
                         Text item=kfroster
@@ -1036,6 +1056,9 @@ sitemap poststrasse label="Poststr. 47" {
             Frame label="Informationen" {
                 Group item=empty_item label="RSSI" {
                     Text item=abendlicht_rssi label="Treppenlicht [%d %%]"
+                    Text item=garagelicht1_rssi label="Garagelicht 1 [%d %%]"
+                    Text item=garagelicht2_rssi label="Garagelicht 2 [%d %%]"
+                    Text item=garagelicht3_rssi label="Garagelicht 3 [%d %%]"
                         Default item=temp1_rssi label="Badezimmer [%d %%]"
                         Default item=temp2_rssi label="Terasse [%d %%]"
                         Default item=kfroster_rssi label="Froster Keller [%d %%]"
@@ -1047,6 +1070,7 @@ sitemap poststrasse label="Poststr. 47" {
                         Default item=sonoff3_rssi label="Sonoff3 [%d %%]"
                         Default item=schlafzimmer_rssi label="Schlafzimmer [%d %%]"
                         Default item=garagenheizung_rssi label="Schlafzimmer [%d %%]"
+                        Default item=abluft_rssi label="Abluft [%d %%]"
                 }
                 Group item=empty_item label="Tasmota Firmware" {
                     Frame label="Firmware Status" {
@@ -1054,6 +1078,9 @@ sitemap poststrasse label="Poststr. 47" {
                     }
                     Frame label="Geräte" {
                         Text item=abendlicht_firmware label="Treppenlicht [%s]"
+                        Text item=garagelicht1_firmware label="Garagelicht 1 [%s]"
+                        Text item=garagelicht2_firmware label="Garagelicht 2 [%s]"
+                        Text item=garagelicht3_firmware label="Garagelicht 3 [%s]"
                             Default item=kfroster_firmware label="Froster Keller [%s]"
                             Default item=froster_firmware label="Froster Küche [%s]"
                             Default item=heizung_firmware label="Heizung [%s]"
@@ -1063,6 +1090,7 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=sonoff3_firmware label="Sonoff3 [%s]"
                             Default item=schlafzimmer_firmware label="Schlafzimmer [%s]"
                             Text item=garagenheizung_firmware label="Treppenlicht [%s]"
+                            Text item=abluft_firmware label="Abluft [%s]"
                     }
                 }
             }
