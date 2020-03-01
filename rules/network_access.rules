@@ -16,7 +16,7 @@ then
             blockieren = 21
         } else {
             freischalten = 8
-            blockieren = 22
+            blockieren = 21
         }
     } else {
         if (dayofweek < 5) {     // MO-DO
@@ -29,7 +29,7 @@ then
         }
         if (dayofweek == 6) {     // SA
             freischalten = 8
-            blockieren = 22
+            blockieren = 21
         }
         if (dayofweek == 7) {     // SO
             freischalten = 8
@@ -92,13 +92,13 @@ when
 Item jule_internet_access changed
 then
 if ( jule_internet_access.state == OFF) {
-        executeCommandLine("/usr/local/bin/block_unifi.sh 54:72:4f:43:97:92",30)         // iPhone
+        executeCommandLine("/usr/local/bin/block_unifi.sh e0:c7:67:17:52:99",30)         // iPhone
         executeCommandLine("/usr/local/bin/block_unifi.sh 84:8e:0c:c3:67:6b",30)         // iPad
         executeCommandLine("/usr/local/bin/block_unifi.sh 00:23:54:04:d3:ef",30)         // PC
         logInfo("network_access.rules", "Jule wurde geblockt.")
 //        sendTelegram("bot1", "Jule wurde geblockt.")
 } else {
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 54:72:4f:43:97:92",30)         // iPhone
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh e0:c7:67:17:52:99",30)         // iPhone
         executeCommandLine("/usr/local/bin/unblock_unifi.sh 84:8e:0c:c3:67:6b",30)         // iPad
         executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:23:54:04:d3:ef",30)         // PC
         logInfo("network_access.rules", "Jule wurde freigeschaltet.")

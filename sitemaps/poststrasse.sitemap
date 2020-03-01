@@ -147,6 +147,7 @@ sitemap poststrasse label="Poststr. 47" {
             }
         }
         Group item=gLights label="Licht" {
+            Default item=eingangslicht
             Default item=abendlicht
                 Default item=schlafzimmer
                 Default item=garagelicht1
@@ -223,17 +224,52 @@ sitemap poststrasse label="Poststr. 47" {
                 Default item=groundfloor_object
             }
             Frame label="Licht" {
+                Default item=eingangslicht
                 Default item=abendlicht
                     Default item=schlafzimmer
             }
             Frame label="Räume" {
-                Group item=gWindfang label="Windfang" {
+                Group item=gEingang label="Eingang" {
+                    Frame label="Tür" {
                     Default item=frontdoor
+                    }
+                    Frame label="Schalter" {
+                        Default item=eingangslicht
+                        Text item=Sunset_Time icon="sunset" label="Einschaltzeit"
+                        Text item=Sunrise_Time icon="sunrise" label="Ausschaltzeit"
+                    }
+                    Frame label="Wetter" {
+                Group item=eingangslicht_temp {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=eingangslicht_temp period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=eingangslicht_temp period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=eingangslicht_temp period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=eingangslicht_temp period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=eingangslicht_temp period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                Group item=eingangslicht_humi {
+                    Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                        Chart item=eingangslicht_humi period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                        Chart item=eingangslicht_humi period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                        Chart item=eingangslicht_humi period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                        Chart item=eingangslicht_humi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                        Chart item=eingangslicht_humi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                }
+                    }
+                }
+                Group item=gWindfang label="Windfang" {
+                    Frame label="Klingel" {
                         Default item=doorbell
                         Text item=doorbell_active
                         Default item=doorbell_active_time
                         Default item=doorbell_status
                         Default item=doorbell_status_time
+                    }
+                    Frame label="Zusatzklingel" {
+                        Default item=ActivateAdditionalDoorbell
+                        Default item=doorbellRemote_status
+                        Default item=doorbellRemote_status_time
+                    }
                 }
                 Group item=gFlur label="Flur" {
                     Default item=flurdoor
@@ -847,7 +883,6 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=temp1_motion
                             Default item=temp1_motion_time
                             Default item=temp1_rssi
-                            Default item=temp1_mac
                             Default item=temp1_lastupdate
                             Default item=temp1_ip
                     }
@@ -892,7 +927,6 @@ sitemap poststrasse label="Poststr. 47" {
                                 Chart item=temp2_rssi period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
                                 Chart item=temp2_rssi period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
                         }
-                        Default item=temp2_mac
                             Default item=temp2_lastupdate
                             Default item=temp2_ip
                     }
@@ -901,34 +935,34 @@ sitemap poststrasse label="Poststr. 47" {
                             Default item=garage_humidity
                             Default item=garage_airswitch
                             Default item=garage_rssi
-                            Default item=garage_mac
                             Default item=garage_lastupdate
                             Default item=garage_ip
                     }
                 }
                 Group item=gSockets {
+                    Frame label="Eingangslicht" {
+                        Text item=eingangslicht_rssi
+                            Text item=eingangslicht_lastupdate
+                            Text item=eingangslicht_firmware
+                    }
                     Frame label="Abendlicht" {
                         Text item=abendlicht_rssi
-                            Text item=abendlicht_mac
                             Text item=abendlicht_lastupdate
                             Text item=abendlicht_firmware
                     }
                     Frame label="Garagelicht 2" {
                         Text item=garagelicht2_rssi
-                            Text item=garagelicht2_mac
                             Text item=garagelicht2_lastupdate
                             Text item=garagelicht2_firmware
                     }
                     Frame label="Garagelicht 2" {
                         Text item=garagelicht2_rssi
-                            Text item=garagelicht2_mac
                             Text item=garagelicht2_lastupdate
                             Text item=garagelicht2_firmware
                     }
                     Frame label="Froster Keller" {
                         Text item=kfroster
                             Text item=kfroster_rssi
-                            Text item=kfroster_mac
                             Text item=kfroster_lastupdate
                             Text item=kfroster_firmware
                             Text item=kfroster_total
@@ -942,7 +976,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Froster Küche" {
                         Text item=froster
                             Text item=froster_rssi
-                            Text item=froster_mac
                             Text item=froster_lastupdate
                             Text item=froster_firmware
                             Text item=froster_total
@@ -956,7 +989,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Heizung" {
                         Text item=heizung
                             Text item=heizung_rssi
-                            Text item=heizung_mac
                             Text item=heizung_lastupdate
                             Text item=heizung_firmware
                             Text item=heizung_total
@@ -970,7 +1002,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Waschmaschine" {
                         Text item=waesche
                             Text item=waesche_rssi
-                            Text item=waesche_mac
                             Text item=waesche_lastupdate
                             Text item=waesche_firmware
                             Text item=waesche_total
@@ -984,7 +1015,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Sonoff1" {
                         Switch item=sonoff1
                             Text item=sonoff1_rssi
-                            Text item=sonoff1_mac
                             Text item=sonoff1_lastupdate
                             Text item=sonoff1_firmware
                             Text item=sonoff1_total
@@ -998,7 +1028,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Server" {
                         Switch item=server
                             Text item=server_rssi
-                            Text item=server_mac
                             Text item=server_lastupdate
                             Text item=server_firmware
                             Text item=server_total
@@ -1012,7 +1041,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Sonoff3" {
                         Switch item=sonoff3
                             Text item=sonoff3_rssi
-                            Text item=sonoff3_mac
                             Text item=sonoff3_lastupdate
                             Text item=sonoff3_firmware
                             Text item=sonoff3_total
@@ -1026,7 +1054,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Schlafzimmer" {
                         Switch item=schlafzimmer
                             Text item=schlafzimmer_rssi
-                            Text item=schlafzimmer_mac
                             Text item=schlafzimmer_lastupdate
                             Text item=schlafzimmer_firmware
                             Text item=schlafzimmer_total
@@ -1040,7 +1067,6 @@ sitemap poststrasse label="Poststr. 47" {
                     Frame label="Garagenheizung" {
                         Switch item=garagenheizung
                             Text item=garagenheizung_rssi
-                            Text item=garagenheizung_mac
                             Text item=garagenheizung_lastupdate
                             Text item=garagenheizung_firmware
                             Text item=garagenheizung_total
@@ -1055,7 +1081,8 @@ sitemap poststrasse label="Poststr. 47" {
             }
             Frame label="Informationen" {
                 Group item=empty_item label="RSSI" {
-                    Text item=abendlicht_rssi label="Treppenlicht [%d %%]"
+                    Text item=eingangslicht_rssi label="Eingangslicht [%d %%]"
+                    Text item=abendlicht_rssi label="Wohnzimmernlicht [%d %%]"
                     Text item=garagelicht1_rssi label="Garagelicht 1 [%d %%]"
                     Text item=garagelicht2_rssi label="Garagelicht 2 [%d %%]"
                     Text item=garagelicht3_rssi label="Garagelicht 3 [%d %%]"
@@ -1077,7 +1104,8 @@ sitemap poststrasse label="Poststr. 47" {
                         Text item=Sonoff_Current_FW_Available
                     }
                     Frame label="Geräte" {
-                        Text item=abendlicht_firmware label="Treppenlicht [%s]"
+                        Text item=eingangslicht_firmware label="Eingangslicht [%s]"
+                        Text item=abendlicht_firmware label="Wohnzimmerlicht [%s]"
                         Text item=garagelicht1_firmware label="Garagelicht 1 [%s]"
                         Text item=garagelicht2_firmware label="Garagelicht 2 [%s]"
                         Text item=garagelicht3_firmware label="Garagelicht 3 [%s]"
@@ -1128,7 +1156,6 @@ sitemap poststrasse label="Poststr. 47" {
                 Default item=push_notifications_active
                     Default item=presence_detection
                     Default item=presence_simulation
-                    Default item=CheckTurnOnLivingRoomLights
             }
             Frame label="OpenHAB Bindings" {
                 Group item=empty_item label="Gymnasium Tostedt" {

@@ -1,13 +1,22 @@
 import org.joda.time.*
 
-rule "Licht-Wohnzimmer an"
+rule "Sonnenuntergang"
 when
     Channel 'astro:sun:home:set#event' triggered START
 then
-    abendlicht.sendCommand("ON")
+    eingangslicht.sendCommand("ON")
     UpdatePresenceLivingRoomTime.postUpdate(180)
     UpdatePresenceLivingRoom.sendCommand("ON")
-    //CheckTurnOnLivingRoomLights.sendCommand("ON")
+    timer = createTimer(now.plusMinutes(45)) [|
+        abendlicht.sendCommand("ON")
+    ]
+end
+
+rule "Sonnenaufgang"
+when
+    Channel 'astro:sun:home:rise#event' triggered START
+then
+    eingangslicht.sendCommand("OFF")
 end
 
 rule "Licht-Wohnzimmer an 2"

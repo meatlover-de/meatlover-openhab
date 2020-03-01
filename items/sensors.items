@@ -6,7 +6,6 @@ Number temp2_vcc "Spannung [%.3f V]" <battery> (gBatteries)
 Contact temp2_vcc_status "Status Spannung [%s]" <battery> (gBatteryStatus)
 Number temp2_vcc_percent "Spannung [%.3f V]" <battery>
 Number temp2_vcc_temp "Spannung [%.3f V]" { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.ANALOG.A0)]" }
-String temp2_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.APMac)]" }
 Number temp2_rssi "RSSI [%d %%]" <network> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.RSSI)]" }
 String temp2_ip "IP Adresse [%s]" <time> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Wifi.IPAddress)]"}
 DateTime temp2_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garden/state:state:JSONPATH($.Time)]"}
@@ -16,7 +15,6 @@ Number temp1_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<
 Number temp1_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Humidity)]" }
 Number temp1_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Pressure)]" }
 Switch temp1_relay "WC Lüfter" <fan> [ "Switchable" ] { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.RELAY.state)],<[mqtt:tele/wc/luefter:state:default],>[mqtt:cmnd/wc/luefter:command:*:default:]" }
-String temp1_mac "Mac Adresse [%s]" { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.APMac)]" }
 Number temp1_rssi "RSSI [%d %%]" <network> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.RSSI)]" }
 String temp1_ip "IP Adresse [%s]" <time> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.IPAddress)]" }
 DateTime temp1_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 
