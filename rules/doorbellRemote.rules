@@ -1,0 +1,9 @@
+rule "Resetting doorbellRemote"
+when
+    Item doorbellRemote changed from OFF to ON
+then
+    logInfo('doorbellRemote.rules','Resetting doorbellRemote')
+    doorbellRemote_status_time.postUpdate(new DateTimeType())
+    //Thread::sleep(2000)
+    doorbellRemote.postUpdate("OFF")
+end
