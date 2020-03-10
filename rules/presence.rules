@@ -2,24 +2,24 @@ rule "Presence Livingroom"
 when
     Member of gPresenceLivingRoom changed
 then
-    if (SamsungTV_Status.state == ON) {
+    if (SamsungTV_Status.state == "ON") {
         var DateTime StartTime = new DateTime((SamsungTV_LastSeen.state as DateTimeType).calendar.timeInMillis)
         var DateTime EndTime = StartTime.plusMinutes(10)
-        presenceLivingRoomTime.postUpdate(new DateTimeType(EndTime.toCalendar(null)))
+        postUpdate(presenceLivingRoomTime, new DateTimeType(EndTime.toCalendar(null)))
         // Nur Textanzeige aktualisieren
         SamsungTV_power.postUpdate("ON")
     }
     // Nur Textanzeige aktualisieren
-    if (SamsungTV_Status.state == OFF) {
+    if (SamsungTV_Status.state == "OFF") {
         SamsungTV_power.postUpdate("OFF")
         SceneTvOn.postUpdate("OFF")
     }
     // Nur Textanzeige aktualisieren
-    if (SkyReceiver_Status.state == ON) {
+    if (SkyReceiver_Status.state == "ON") {
         SkyReceiver_power.postUpdate("ON")
     }
     // Nur Textanzeige aktualisieren
-    if (SkyReceiver_Status.state == OFF) {
+    if (SkyReceiver_Status.state == "OFF") {
         SkyReceiver_power.postUpdate("OFF")
     }
 end
@@ -27,12 +27,12 @@ end
 
 rule "Presence Detection"
 when
-    Item frontdoor changed
+    Item eingangstuer changed
 then
-    if (presence_detection.state == ON) {
-    if (frontdoor.state == OPEN) {
-        sendNotification("info@cs-ol.de", "Eingangstür wurde geöffnet")
-    }
+    if (presence_detection.state == "ON") {
+    	if (eingangstuer.state == "OPEN") {
+        	sendNotification("info@cs-ol.de", "Eingangstür wurde geöffnet")
+    	}
     }
 end
 

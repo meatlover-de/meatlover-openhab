@@ -1,0 +1,24 @@
+rule "Lichtaenderung Eingang"
+when
+    Item eingangstuer changed
+then
+    if (eingangstuer.state == OPEN) {
+        if (eingangslicht.state == ON) {
+             eingangslicht_dimmer.sendCommand(100)
+        }
+    }
+    if (eingangstuer.state == CLOSED) {
+        if (eingangslicht.state == ON) {
+             eingangslicht_dimmer.sendCommand(eingangslicht_standard.state as DecimalType)
+        }
+    }
+end
+
+rule "Mindesthelligkeit"
+when
+    Item eingangslicht_standard changed
+then
+    if (eingangstuer.state == CLOSED) {
+        eingangslicht_dimmer.sendCommand(eingangslicht_standard.state as DecimalType)
+    }
+end

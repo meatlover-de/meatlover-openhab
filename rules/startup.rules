@@ -4,18 +4,7 @@ rule "System startup"
 when
     System started
 then
-    gymto_klasse5a_notifier.postUpdate("OFF")
-    gymto_klasse6a_notifier.postUpdate("OFF")
-    gymto_klasse7a_notifier.postUpdate("OFF")
-    gymto_klasse8a_notifier.postUpdate("OFF")
-    gymto_klasse5a.postUpdate("Keine Vertretung")
-    gymto_klasse6a.postUpdate("Keine Vertretung")
-    gymto_klasse7a.postUpdate("Keine Vertretung")
-    gymto_klasse8a.postUpdate("Keine Vertretung")
-    gymto_klasse5a_short.postUpdate("Keine Vertretung")
-    gymto_klasse6a_short.postUpdate("Keine Vertretung")
-    gymto_klasse7a_short.postUpdate("Keine Vertretung")
-    gymto_klasse8a_short.postUpdate("Keine Vertretung")
+
     Echo_Silence_Audio.sendCommand("OFF")
     presenceLivingRoomTime.sendCommand(new DateTimeType)
     SamsungTV_mute.postUpdate("ON")

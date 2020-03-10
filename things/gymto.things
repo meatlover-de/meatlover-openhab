@@ -1,2 +1,0 @@
-Thing exec:command:klasse5a [command="/usr/local/bin/php_gymto_vplan.php Jule", interval=3600, timeout=30, autorun=true]
-Thing exec:command:klasse6a [command="/usr/local/bin/php_gymto_vplan.php Svenja", interval=3600, timeout=30, autorun=true]

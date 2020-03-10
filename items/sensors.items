@@ -23,9 +23,4 @@ Number temp1_relayruntime "Dauer Lüfterlauf [%d min]" <time> { mqtt=">[mqtt:cmn
 Switch temp1_motion "Bewegung" <motion> (gMotion) { mqtt="<[mqtt:tele/wc/movement:state:default]" }
 //DateTime temp1_motion_time "Uhrzeit letzte Bewegung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 
 
-Contact frontdoor "Eingangstür [MAP(contacts.map):%s]" <door> (gDoorStatus) { mqtt="<[mqtt:tele/frontdoor/STATUS:state:default]" }
-Contact flurdoor "Flurtür [MAP(contacts.map):%s]" <door> (gDoorStatus) { mqtt="<[mqtt:tele/flurdoor/STATUS:state:default]" }
-Number flur_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Temperature)]" }
-Number flur_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Humidity)]" }
-Number flur_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/flur/SENSOR:state:JSONPATH($.Pressure)]" }
 

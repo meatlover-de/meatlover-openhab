@@ -1,25 +1,3 @@
-rule "Garagenheizung"
-when
-    Item garage_temp received update
-then
-    var solltemp = (garage_solltemp.state as DecimalType).intValue
-    var isttemp = (garage_temp.state as DecimalType).intValue
-
-    if (solltemp < isttemp) {
-        // kann aus
-        if (garagenheizung.state == ON) {
-            sendCommand(garagenheizung,OFF)
-            logInfo("garage.rules","Schalte Garagenheizung aus")
-        }
-    } else {
-        // mach an
-        if (garagenheizung.state == OFF) {
-            sendCommand(garagenheizung,ON)
-            logInfo("garage.rules","Schalte Garagenheizung an")
-        }
-    }
-end
-
 rule "Garagenlicht 1"
 when
     Item garageschalter1_licht1 received update
