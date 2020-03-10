@@ -117,23 +117,35 @@ Number schlafzimmer_current "Schlafzimmer [%.3f A]" <current> (gCurrents,gCurren
 
 
 // Funktion
-Switch garagenheizung "Garagenheizung" <poweroutlet> (gSockets) ["Lighting"] {mqtt="<[mqtt:tele/garagenheizung/POWER1:state:default], >[mqtt:cmnd/garagenheizung/power:command:*:default]"}
-Number garagenheizung_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/garagenheizung/STATE:state:JSONPATH($.Wifi.RSSI)]" }
-DateTime garagenheizung_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/garagenheizung/STATE:state:JSONPATH($.Time)]"}
-String garagenheizung_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/garagenheizung/INFO1:state:JSONPATH($.Version)]"}
-Number garagenheizung_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
-Number garagenheizung_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
-Number garagenheizung_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
-Number garagenheizung_power "Garagenheizung [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
-Number garagenheizung_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
-Number garagenheizung_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
-Number garagenheizung_current "Garagenheizung [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/garagenheizung/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
+Switch akkulader "Akkulader" <poweroutlet> (gSockets) ["Lighting"] {mqtt="<[mqtt:tele/akkulader/POWER1:state:default], >[mqtt:cmnd/akkulader/power:command:*:default]"}
+Number akkulader_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/akkulader/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+DateTime akkulader_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/akkulader/STATE:state:JSONPATH($.Time)]"}
+String akkulader_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/akkulader/INFO1:state:JSONPATH($.Version)]"}
+Number akkulader_total "Verbrauch gesamt [%.3f kWh]" { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Total)]" }
+Number akkulader_yesterday "Verbrauch gestern [%.3f kWh]" { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Yesterday)]" }
+Number akkulader_today "Verbrauch heute [%.3f kWh]" { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Today)]" }
+Number akkulader_power "Akkulader [%d W]" <energy> (gPower,gPowerSum) { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Power)]" }
+Number akkulader_factor "Faktor [%.2f]" { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Factor)]" }
+Number akkulader_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Voltage)]" }
+Number akkulader_current "Akkulader [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
 
 Group gEingang
-Switch eingangslicht "Eingangslicht" <light> (gEingang, gSockets) ["Lighting"] {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/eingangslicht/power:command:*:default]"}
+Switch eingangslicht "Eingangslicht" <light> (gEingang, gSockets) ["Lighting"] {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.POWER1)], >[mqtt:cmnd/eingangslicht/power1:command:*:default]"}
+Switch eingangslicht_fade "Fading" (gEingang) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Fade)], >[mqtt:cmnd/eingangslicht/fade:command:*:default]"}
+Number eingangslicht_fadetime "Fadespeed [%.0f]" (gEingang) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Speed)], >[mqtt:cmnd/eingangslicht/Speed:command:*:default]"}
+Number eingangslicht_standard "Mindesthelligkeit [%.0f]" (gEingang)
+Dimmer eingangslicht_dimmer "Helligkeit [%.0f %%]" <light> (gEingang, gSockets) ["Lighting"] {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Dimmer)], >[mqtt:cmnd/eingangslicht/Dimmer:command:*:default]"}
 Number eingangslicht_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Wifi.RSSI)]" }
 DateTime eingangslicht_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Time)]"}
 String eingangslicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/eingangslicht/INFO1:state:JSONPATH($.Version)]"}
 Number eingangslicht_humi "Luftfeuchtigkeit [%d %%]" { mqtt="<[mqtt:tele/eingangslicht/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }
 Number eingangslicht_temp "Temperatur [%d %%]" { mqtt="<[mqtt:tele/eingangslicht/SENSOR:state:JSONPATH($.DHT11.Temperature)]" }
 
+Contact eingangstuer "Eingangstür [MAP(contacts.map):%s]" <door> (gDoors, gDoorStatus) {mqtt="<[mqtt:stat/eingangstuer/POWER2:state:MAP(OFF_OPEN.map)]"}
+Contact flurtuer "Flurtür [MAP(contacts.map):%s]" <door> (gDoors, gDoorStatus) {mqtt="<[mqtt:stat/eingangstuer/POWER1:state:MAP(OFF_OPEN.map)]"}
+Contact bewegungflur "Bewegung Flur [MAP(contacts.map):%s]" <motion> (gMotion) {mqtt="<[mqtt:stat/eingangstuer/POWER3:state:MAP(ON_OPEN.map)]"}
+Number eingangstuer_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+DateTime eingangstuer_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/eingangstuer/STATE:state:JSONPATH($.Time)]"}
+String eingangstuer_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/eingangstuer/INFO1:state:JSONPATH($.Version)]"}
+Number eingangstuer_humi "Luftfeuchtigkeit [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }
+Number eingangstuer_temp "Temperatur [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/SENSOR:state:JSONPATH($.DHT11.Temperature)]" }
