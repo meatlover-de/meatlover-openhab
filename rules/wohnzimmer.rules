@@ -4,11 +4,11 @@ rule "Sonnenuntergang"
 when
     Channel 'astro:sun:home:set#event' triggered START
 then
-    eingangslicht.sendCommand("ON")
+    abendlicht.sendCommand("ON")
     UpdatePresenceLivingRoomTime.postUpdate(180)
     UpdatePresenceLivingRoom.sendCommand("ON")
     timer = createTimer(now.plusMinutes(45)) [|
-        abendlicht.sendCommand("ON")
+        eingangslicht.sendCommand("ON")
     ]
 end
 
