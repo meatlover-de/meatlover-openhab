@@ -2,9 +2,9 @@ Switch doorbell_active "Es klingelt gerade [%s]" <bell> { mqtt="<[mqtt:tele/door
 DateTime doorbell_active_time "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 
 String doorbell_status "Status Türklingel [%s]" { mqtt="<[mqtt:tele/doorbell/STATUS:state:default]" } 
 String doorbell_status_time "Letzte Meldung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time>
-Switch doorbell "Türklingel" <switch> [ "Switchable" ] { mqtt="<[mqtt:tele/doorbell/bell:state:default],>[mqtt:cmnd/doorbell:command:*:default]" }
+Switch doorbell "Türklingel" <switch> { mqtt="<[mqtt:tele/doorbell/bell:state:default],>[mqtt:cmnd/doorbell:command:*:default]" }
 
-Switch doorbellRemote "Zusatzklingel" <switch> [ "Switchable" ] { mqtt=">[mqtt:cmnd/doorbellRemote:command:*:default]" }
+Switch doorbellRemote "Zusatzklingel" <switch> { mqtt=">[mqtt:cmnd/doorbellRemote:command:*:default]" }
 String doorbellRemote_status "Status Zusatzklingel [%s]" { mqtt="<[mqtt:tele/doorbellRemote/STATUS:state:default]" } 
 String doorbellRemote_status_time "Letzte Meldung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time>
 

@@ -1,0 +1,42 @@
+import org.joda.time.*
+
+
+rule "Svenja: Block internet access"
+when
+	Item svenja_internet_access received command
+then
+        logInfo("network_access_action.rules", "Svenja state: " + svenja_internet_access.state)
+if ( svenja_internet_access.state == OFF) {
+        executeCommandLine("/usr/local/bin/block_unifi.sh bc:54:36:43:a2:bc",1000)         // Flauschi
+        executeCommandLine("/usr/local/bin/block_unifi.sh 9c:04:eb:bc:21:ec",1000)         // iPad
+        executeCommandLine("/usr/local/bin/block_unifi.sh 00:24:8c:4c:f8:5f",1000)         // PC
+        logInfo("network_access_action.rules", "Svenja wurde geblockt.")
+//        sendTelegram("bot1", "Svenja wurde geblockt.")
+} else {
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh bc:54:36:43:a2:bc",1000)         // Flauschi
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh 9c:04:eb:bc:21:ec",1000)         // iPad
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:24:8c:4c:f8:5f",1000)         // PC
+        logInfo("network_access_action.rules", "Svenja wurde freigeschaltet.")
+//        sendTelegram("bot1", "Svenja wurde freigeschaltet.")
+}
+end
+
+rule "Jule: Block internet access"
+when
+	Item jule_internet_access received command
+then
+if ( jule_internet_access.state == OFF) {
+        executeCommandLine("/usr/local/bin/block_unifi.sh e0:c7:67:17:52:99",1000)         // iPhone
+        executeCommandLine("/usr/local/bin/block_unifi.sh 84:8e:0c:c3:67:6b",1000)         // iPad
+        executeCommandLine("/usr/local/bin/block_unifi.sh 00:23:54:04:d3:ef",1000)         // PC
+        logInfo("network_access_action.rules", "Jule wurde geblockt.")
+//        sendTelegram("bot1", "Jule wurde geblockt.")
+} else {
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh e0:c7:67:17:52:99",1000)         // iPhone
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh 84:8e:0c:c3:67:6b",1000)         // iPad
+        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:23:54:04:d3:ef",1000)         // PC
+        logInfo("network_access_action.rules", "Jule wurde freigeschaltet.")
+//        sendTelegram("bot1", "Jule wurde freigeschaltet.")
+}
+end
+

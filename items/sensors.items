@@ -14,7 +14,7 @@ DateTime temp2_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <tim
 Number temp1_temp "Temperatur [%.1f °C]" <temperature> (gTemperature) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Temperature)]" }
 Number temp1_humi "Luftfeuchtigkeit [%.1f %%]" <humidity> (gHumidity) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Humidity)]" }
 Number temp1_pres "Luftdruck [%.1f mbar]" <pressure> (gPressure) { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.BME280.Pressure)]" }
-Switch temp1_relay "WC Lüfter" <fan> [ "Switchable" ] { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.RELAY.state)],<[mqtt:tele/wc/luefter:state:default],>[mqtt:cmnd/wc/luefter:command:*:default:]" }
+Switch temp1_relay "WC Lüfter" <fan> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.RELAY.state)],<[mqtt:tele/wc/luefter:state:default],>[mqtt:cmnd/wc/luefter:command:*:default:]" }
 Number temp1_rssi "RSSI [%d %%]" <network> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.RSSI)]" }
 String temp1_ip "IP Adresse [%s]" <time> { mqtt="<[mqtt:tele/wc/state:state:JSONPATH($.Wifi.IPAddress)]" }
 DateTime temp1_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> 

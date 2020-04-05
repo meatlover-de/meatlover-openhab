@@ -7,17 +7,6 @@ then
 
     Echo_Silence_Audio.sendCommand("OFF")
     presenceLivingRoomTime.sendCommand(new DateTimeType)
-    SamsungTV_mute.postUpdate("ON")
-
-    createTimer(now.plusSeconds(180)) [|
-        logInfo(filename, "--> astro init")
-        if (now.isAfter((Sunset_Time.state as DateTimeType).calendar.timeInMillis) ||
-            now.isBefore((Sunrise_Time.state as DateTimeType).calendar.timeInMillis)
-        ) {
-            Night_State.postUpdate(ON)
-        } else {
-            Night_State.postUpdate(OFF)
-        }
-    ]
+    eingangslicht_standard.sendCommand("5")
 end
 

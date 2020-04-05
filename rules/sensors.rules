@@ -34,7 +34,7 @@ rule "Timestamp motion detection - temp1"
 when
         Item temp1_motion changed 
 then
-        if (temp1_motion.state == "ON") {
+        if (temp1_motion.state == ON) {
             temp1_motion_time.postUpdate(new DateTimeType())
         }
 end

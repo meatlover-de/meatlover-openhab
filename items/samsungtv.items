@@ -12,15 +12,15 @@ Switch SamsungTV_power "Samsung TV Power" <tv> (gSamsungLR) { mqtt=">[mqtt:broad
 Switch SamsungTV_Status <tv> (gPresenceLivingRoom,gSamsungLR) {channel="network:pingdevice:samsungtv:online"}
 DateTime SamsungTV_LastSeen (gPresenceLivingRoom,gSamsungLR) {channel="network:pingdevice:samsungtv:lastseen"}
 Switch SamsungTV_SetInputHdmi3 "Samsung TV HDMI3" <tv> (gSamsungLR) { mqtt=">[mqtt:broadlink/tv/samsung/hdmi3:command:*:MAP(broadlink.map)]" }
-Switch SamsungTV_mute "TV Ton" <tv> (gSamsungLR) ["Switchable"] { mqtt=">[mqtt:broadlink/tv/samsung/mute:command:*:MAP(broadlink.map)]" }
-Switch SamsungTV_pause "TV Pause" <tv> (gSamsungLR) ["Switchable"] { mqtt=">[mqtt:broadlink/tv/samsung/pause:command:*:MAP(broadlink.map)]" }
+Switch SamsungTV_mute "TV Ton" <tv> (gSamsungLR) { mqtt=">[mqtt:broadlink/tv/samsung/mute:command:*:MAP(broadlink.map)]" }
+Switch SamsungTV_pause "TV Pause" <tv> (gSamsungLR) { mqtt=">[mqtt:broadlink/tv/samsung/pause:command:*:MAP(broadlink.map)]" }
 
 Group gSky "Sky Receiver" (gWohnzimmer)
-Switch SkyReceiver_power "Sky Receiver" <tv> (gSky) [ "Switchable" ] { mqtt=">[mqtt:broadlink/tv/sky/power:command:*:MAP(broadlink.map)]" }
+Switch SkyReceiver_power "Sky Receiver" <tv> (gSky) { mqtt=">[mqtt:broadlink/tv/sky/power:command:*:MAP(broadlink.map)]" }
 Switch SkyReceiver_skybutton "Sky Button" <tv> (gSky) { mqtt=">[mqtt:broadlink/tv/sky/sky:command:*:MAP(broadlink.map)]" }
 Switch SkyReceiver_Status <tv> (gPresenceLivingRoom,gSky) {channel="network:pingdevice:skyreceiver:online"}
 DateTime SkyReceiver_LastSeen (gSky) {channel="network:pingdevice:skyreceiver:lastseen"}
-Switch SkyReceiver_pause "Sky Pause" <tv> (gSky) ["Switchable"] { mqtt=">[mqtt:broadlink/tv/sky/pause:command:ON:MAP(broadlink.map)],>[mqtt:broadlink/tv/sky/play:command:OFF:MAP(broadlink.map)]" }
+Switch SkyReceiver_pause "Sky Pause" <tv> (gSky) { mqtt=">[mqtt:broadlink/tv/sky/pause:command:ON:MAP(broadlink.map)],>[mqtt:broadlink/tv/sky/play:command:OFF:MAP(broadlink.map)]" }
 
 
 Group gOnkyoLR "Onkyo Receiver" (gWohnzimmer)

@@ -1,8 +1,12 @@
 Switch svenja_internet_access_timed "Zeitschaltung Svenja"
 Switch svenja_internet_access "Internet Svenja"
+Number internet_startzeit_svenja "Startzeit [%d Uhr]" <time>
+Number internet_endzeit_svenja "Endzeit [%d Uhr]" <time>
+
 Switch jule_internet_access_timed   "Zeitschaltung Jule"
 Switch jule_internet_access   "Internet Jule"
+Number internet_startzeit_jule "Startzeit [%d Uhr]" <time>
+Number internet_endzeit_jule "Endzeit [%d Uhr]" <time>
 
 Number internet_startzeit "Startzeit [%d Uhr]" <time>
 Number internet_endzeit "Endzeit [%d Uhr]" <time>
-

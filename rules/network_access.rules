@@ -36,8 +36,12 @@ then
             blockieren = 20
         }
     }
+
     internet_startzeit.postUpdate(freischalten)
+
     internet_endzeit.postUpdate(blockieren)
+
+
     if (now.getHourOfDay() >= freischalten && now.getHourOfDay() < blockieren) {
         if (svenja_internet_access_timed.state == ON) {
             if (svenja_internet_access.state == OFF) {
@@ -51,7 +55,7 @@ then
                 logInfo("network_access.rules", "Network access for Jule granted")
             }
         }
-    } else {
+    } else { 
         if (svenja_internet_access_timed.state == ON) {
             if (svenja_internet_access.state == ON) {
                 svenja_internet_access.sendCommand("OFF")
@@ -67,42 +71,4 @@ then
     }
 end
 
-
-rule "Svenja: Block internet access"
-when
-Item svenja_internet_access changed
-then
-if ( svenja_internet_access.state == OFF) {
-        executeCommandLine("/usr/local/bin/block_unifi.sh 70:3e:ac:29:2d:d9",30)         // Flauschi
-        executeCommandLine("/usr/local/bin/block_unifi.sh 9c:04:eb:bc:21:ec",30)         // iPad
-        executeCommandLine("/usr/local/bin/block_unifi.sh 00:24:8c:4c:f8:5f",30)         // PC
-        logInfo("network_access.rules", "Svenja wurde geblockt.")
-//        sendTelegram("bot1", "Svenja wurde geblockt.")
-} else {
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 70:3e:ac:29:2d:d9",30)         // Flauschi
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 9c:04:eb:bc:21:ec",30)         // iPad
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:24:8c:4c:f8:5f",30)         // PC
-        logInfo("network_access.rules", "Svenja wurde freigeschaltet.")
-//        sendTelegram("bot1", "Svenja wurde freigeschaltet.")
-}
-end
-
-rule "Jule: Block internet access"
-when
-Item jule_internet_access changed
-then
-if ( jule_internet_access.state == OFF) {
-        executeCommandLine("/usr/local/bin/block_unifi.sh e0:c7:67:17:52:99",30)         // iPhone
-        executeCommandLine("/usr/local/bin/block_unifi.sh 84:8e:0c:c3:67:6b",30)         // iPad
-        executeCommandLine("/usr/local/bin/block_unifi.sh 00:23:54:04:d3:ef",30)         // PC
-        logInfo("network_access.rules", "Jule wurde geblockt.")
-//        sendTelegram("bot1", "Jule wurde geblockt.")
-} else {
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh e0:c7:67:17:52:99",30)         // iPhone
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 84:8e:0c:c3:67:6b",30)         // iPad
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:23:54:04:d3:ef",30)         // PC
-        logInfo("network_access.rules", "Jule wurde freigeschaltet.")
-//        sendTelegram("bot1", "Jule wurde freigeschaltet.")
-}
-end
 

@@ -1,0 +1,27 @@
+import org.joda.time.*
+
+rule "Presence Livingroom"
+when
+    Member of gPresenceLivingRoom changed
+then
+    if (SamsungTV_Status.state == ON) {
+        val EndTime = now.plusMinutes(10)
+        postUpdate(presenceLivingRoomTime, EndTime.toString)
+        // Nur Textanzeige aktualisieren
+        SamsungTV_power.postUpdate("ON")
+    }
+    // Nur Textanzeige aktualisieren
+    if (SamsungTV_Status.state == OFF) {
+        SamsungTV_power.postUpdate("OFF")
+        SceneTvOn.postUpdate("OFF")
+    }
+    // Nur Textanzeige aktualisieren
+    if (SkyReceiver_Status.state == ON) {
+        SkyReceiver_power.postUpdate("ON")
+    }
+    // Nur Textanzeige aktualisieren
+    if (SkyReceiver_Status.state == OFF) {
+        SkyReceiver_power.postUpdate("OFF")
+    }
+end
+

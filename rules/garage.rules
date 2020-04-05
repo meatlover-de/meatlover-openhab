@@ -1,6 +1,6 @@
 rule "Garagenlicht 1"
 when
-    Item garageschalter1_licht1 received update
+    Item garageschalter1_licht1 received command
 then
     if ( garageschalter1_licht1.state == ON) {
         sendCommand(garagelicht1,ON)
@@ -13,7 +13,7 @@ end
 
 rule "Garagenlicht 2"
 when
-    Item garageschalter1_licht2 received update
+    Item garageschalter1_licht2 received command
 then
     if ( garageschalter1_licht2.state == ON) {
         sendCommand(garagelicht2,ON)

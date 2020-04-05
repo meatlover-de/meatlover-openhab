@@ -1,0 +1,13 @@
+import org.joda.time.*
+
+rule "Presence Detection"
+when
+    Item eingangstuer changed
+then
+    if (presence_detection.state == ON) {
+    	if (eingangstuer.state == "OPEN") {
+        	sendNotification("info@cs-ol.de", "Eingangstür wurde geöffnet")
+    	}
+    }
+end
+

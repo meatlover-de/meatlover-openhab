@@ -1,0 +1,25 @@
+Number host_openhab_cpu "CPU [%.1f %%]" <cpu> {mqtt="<[mqtt:psmqtt/openhab/cpu_percent:state:default]"}
+Number host_openhab_memory "Memory [%.1f %%]" <memory> {mqtt="<[mqtt:psmqtt/openhab/virtual_memory/percent:state:default]"}
+Number host_openhab_cputemp "CPU Temp [%.1f °C]" <temperature> {mqtt="<[mqtt:psmqtt/openhab/sensors_temperatures/cpu-thermal:state:default]"}
+String host_openhab_uptime "Uptime [%s]" <clock> {mqtt="<[mqtt:psmqtt/openhab/uptime:state:default]"}
+
+Number host_grafana_cpu "CPU [%.1f %%]" <cpu> {mqtt="<[mqtt:psmqtt/grafana/cpu_percent:state:default]"}
+Number host_grafana_memory "Memory [%.1f %%]" <memory> {mqtt="<[mqtt:psmqtt/grafana/virtual_memory/percent:state:default]"}
+Number host_grafana_cputemp "CPU Temp [%.1f °C]" <temperature> {mqtt="<[mqtt:psmqtt/grafana/sensors_temperatures/cpu-thermal:state:default]"}
+String host_grafana_uptime "Uptime [%s]" <clock> {mqtt="<[mqtt:psmqtt/grafana/uptime:state:default]"}
+
+Number host_nodered_cpu "CPU [%.1f %%]" <cpu> {mqtt="<[mqtt:psmqtt/nodered/cpu_percent:state:default]"}
+Number host_nodered_memory "Memory [%.1f %%]" <memory> {mqtt="<[mqtt:psmqtt/nodered/virtual_memory/percent:state:default]"}
+Number host_nodered_cputemp "CPU Temp [%.1f °C]" <temperature> {mqtt="<[mqtt:psmqtt/nodered/sensors_temperatures/cpu-thermal:state:default]"}
+String host_nodered_uptime "Uptime [%s]" <clock> {mqtt="<[mqtt:psmqtt/nodered/uptime:state:default]"}
+
+Number host_raspi3_cpu "CPU [%.1f %%]" <cpu> {mqtt="<[mqtt:psmqtt/raspi3/cpu_percent:state:default]"}
+Number host_raspi3_memory "Memory [%.1f %%]" <memory> {mqtt="<[mqtt:psmqtt/raspi3/virtual_memory/percent:state:default]"}
+Number host_raspi3_cputemp "CPU Temp [%.1f °C]" <temperature> {mqtt="<[mqtt:psmqtt/raspi3/sensors_temperatures/cpu-thermal:state:default]"}
+String host_raspi3_uptime "Uptime [%s]" <clock> {mqtt="<[mqtt:psmqtt/raspi3/uptime:state:default]"}
+
+Number host_raspi5_cpu "CPU [%.1f %%]" <cpu> {mqtt="<[mqtt:psmqtt/raspi5/cpu_percent:state:default]"}
+Number host_raspi5_memory "Memory [%.1f %%]" <memory> {mqtt="<[mqtt:psmqtt/raspi5/virtual_memory/percent:state:default]"}
+Number host_raspi5_cputemp "CPU Temp [%.1f °C]" <temperature> {mqtt="<[mqtt:psmqtt/raspi5/sensors_temperatures/cpu-thermal:state:default]"}
+String host_raspi5_uptime "Uptime [%s]" <clock> {mqtt="<[mqtt:psmqtt/raspi5/uptime:state:default]"}
+

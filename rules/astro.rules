@@ -1,27 +1,21 @@
 val String filename = "astro.rules"
 
-rule "Update Night_State"
-when
-    Time cron "0 * * * * ?"
-then
-    if (Sun_Elevation.state > 0.0) {
-        if (Night_State.state != OFF) Night_State.postUpdate(OFF)
-    } else {
-        if (Night_State.state != ON) Night_State.postUpdate(ON)
-    }
-end
-
-/*
-rule "Sun_Elevation update"
-when
-    Item Sun_Elevation received update
-then
-    logInfo("astro.rules","Sun Elevation updated to " + Sun_Elevation.state)
-end
 rule "Sun_Elevation change"
 when
     Item Sun_Elevation changed
 then
     logInfo("astro.rules","Sun Elevation changed to " + Sun_Elevation.state)
+
+    var elev = Float::parseFloat(Sun_Elevation.state.toString.replace(" °",""))
+
+    if (elev < 0.0) {
+	if (Night_State.state == OFF) {
+	    sendCommand(Night_State, "ON")
+	}
+    } else {
+	if (Night_State.state == ON) {
+	    sendCommand(Night_State, "OFF")
+	}
+    }
 end
-*/
+
