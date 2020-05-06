@@ -126,6 +126,8 @@ sitemap poststrasse label="Poststr. 47" {
                 Group item=gLights label="Licht" {
                         Default item=eingangslicht
                                 Default item=abendlicht
+                                Default item=svenjalicht
+                                Default item=julelicht
                                 Default item=schlafzimmer
                                 Default item=garagelicht1
                                 Default item=garagelicht2
@@ -157,7 +159,7 @@ sitemap poststrasse label="Poststr. 47" {
                         Frame label="Zimmer" icon="room" {
                                 Group item=empty_item label="Svenja" {
                                         Frame label="Licht & Schalter" {
-                                                Default item=empty_item
+                                                Default item=svenjalicht
                                         }
                                         Frame label="Status" {
                                                 Default item=empty_item label="Temperatur" icon="temperature"
@@ -172,7 +174,7 @@ sitemap poststrasse label="Poststr. 47" {
                                 }
                                 Group item=empty_item label="Jule" {
                                         Frame label="Licht & Schalter" {
-                                                Default item=empty_item
+                                                Default item=julelicht
                                         }
                                         Frame label="Status" {
                                                 Default item=empty_item label="Temperatur" icon="temperature"
@@ -865,6 +867,16 @@ sitemap poststrasse label="Poststr. 47" {
                                                         Text item=abendlicht_lastupdate
                                                         Text item=abendlicht_firmware
                                         }
+                                        Frame label="Abendlicht" {
+                                                Text item=julelicht_rssi
+                                                        Text item=julelicht_lastupdate
+                                                        Text item=julelicht_firmware
+                                        }
+                                        Frame label="Abendlicht" {
+                                                Text item=svenjalicht_rssi
+                                                        Text item=svenjalicht_lastupdate
+                                                        Text item=svenjalicht_firmware
+                                        }
                                         Frame label="Garagelicht 2" {
                                                 Text item=garagelicht2_rssi
                                                         Text item=garagelicht2_lastupdate
@@ -998,6 +1010,8 @@ sitemap poststrasse label="Poststr. 47" {
                                 Group item=empty_item label="RSSI" {
                                         Text item=eingangslicht_rssi label="Eingangslicht [%d %%]"
                                                 Text item=abendlicht_rssi label="Wohnzimmernlicht [%d %%]"
+                                                Text item=svenjalicht_rssi label="Wohnzimmernlicht [%d %%]"
+                                                Text item=julelicht_rssi label="Wohnzimmernlicht [%d %%]"
                                                 Text item=garagelicht1_rssi label="Garagelicht 1 [%d %%]"
                                                 Text item=garagelicht2_rssi label="Garagelicht 2 [%d %%]"
                                                 Text item=garagelicht3_rssi label="Garagelicht 3 [%d %%]"
@@ -1021,6 +1035,8 @@ sitemap poststrasse label="Poststr. 47" {
                                         Frame label="Geräte" {
                                                 Text item=eingangslicht_firmware label="Eingangslicht [%s]"
                                                         Text item=abendlicht_firmware label="Wohnzimmerlicht [%s]"
+                                                        Text item=svenjalicht_firmware label="Wohnzimmerlicht [%s]"
+                                                        Text item=julelicht_firmware label="Wohnzimmerlicht [%s]"
                                                         Text item=garagelicht1_firmware label="Garagelicht 1 [%s]"
                                                         Text item=garagelicht2_firmware label="Garagelicht 2 [%s]"
                                                         Text item=garagelicht3_firmware label="Garagelicht 3 [%s]"

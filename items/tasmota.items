@@ -149,3 +149,13 @@ DateTime eingangstuer_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM
 String eingangstuer_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/eingangstuer/INFO1:state:JSONPATH($.Version)]"}
 Number eingangstuer_humi "Luftfeuchtigkeit [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }
 Number eingangstuer_temp "Temperatur [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/SENSOR:state:JSONPATH($.DHT11.Temperature)]" }
+
+Switch svenjalicht "Svenja Licht" <light> (gSockets) {mqtt="<[mqtt:tele/svenjalicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/svenjalicht/power:command:*:default]"}
+Number svenjalicht_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/svenjalicht/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+DateTime svenjalicht_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/svenjalicht/STATE:state:JSONPATH($.Time)]"}
+String svenjalicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/svenjalicht/INFO1:state:JSONPATH($.Version)]"}
+
+Switch julelicht "Jule Licht" <light> (gSockets) {mqtt="<[mqtt:tele/julelicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/julelicht/power:command:*:default]"}
+Number julelicht_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/julelicht/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+DateTime julelicht_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/julelicht/STATE:state:JSONPATH($.Time)]"}
+String julelicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/julelicht/INFO1:state:JSONPATH($.Version)]"}

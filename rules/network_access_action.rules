@@ -1,42 +1,69 @@
-import org.joda.time.*
 
-
-rule "Svenja: Block internet access"
+rule "Svenja: Erlaube Internet access 1"
 when
-	Item svenja_internet_access received command
+	Item svenja_internet_access received command ON
 then
-        logInfo("network_access_action.rules", "Svenja state: " + svenja_internet_access.state)
-if ( svenja_internet_access.state == OFF) {
-        executeCommandLine("/usr/local/bin/block_unifi.sh bc:54:36:43:a2:bc",1000)         // Flauschi
-        executeCommandLine("/usr/local/bin/block_unifi.sh 9c:04:eb:bc:21:ec",1000)         // iPad
-        executeCommandLine("/usr/local/bin/block_unifi.sh 00:24:8c:4c:f8:5f",1000)         // PC
-        logInfo("network_access_action.rules", "Svenja wurde geblockt.")
-//        sendTelegram("bot1", "Svenja wurde geblockt.")
-} else {
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh bc:54:36:43:a2:bc",1000)         // Flauschi
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 9c:04:eb:bc:21:ec",1000)         // iPad
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:24:8c:4c:f8:5f",1000)         // PC
-        logInfo("network_access_action.rules", "Svenja wurde freigeschaltet.")
+        var res = executeCommandLine("/etc/openhab2/commands/block_svenja.sh unblock",15000)
+        logInfo("network_access_action.rules", "Ergebnis: Svenja ON -> {}", res)
+        if (res != "0") {
+            postUpdate(svenja_internet_access, "OFF");
+        } else {
+            logInfo("network_access_action.rules", "Svenja wurde freigeschaltet.")
+        }
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh bc:54:36:43:a2:bc",15000)         // Flauschi
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh 9c:04:eb:bc:21:ec",15000)         // iPad
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:24:8c:4c:f8:5f",15000)         // PC
 //        sendTelegram("bot1", "Svenja wurde freigeschaltet.")
-}
+end
+
+rule "Svenja: Blocke Internet access"
+when
+	Item svenja_internet_access received command OFF
+then
+        var res = executeCommandLine("/etc/openhab2/commands/block_svenja.sh block",15000)
+        logInfo("network_access_action.rules", "Ergebnis: Svenja OFF -> {}", res)
+        if (res != "0") {
+            postUpdate(svenja_internet_access, "ON");
+        } else {
+            logInfo("network_access_action.rules", "Svenja wurde geblockt.")
+        }
+        //executeCommandLine("/usr/local/bin/block_unifi.sh bc:54:36:43:a2:bc",15000)         // Flauschi
+        //executeCommandLine("/usr/local/bin/block_unifi.sh 9c:04:eb:bc:21:ec",15000)         // iPad
+        //executeCommandLine("/usr/local/bin/block_unifi.sh 00:24:8c:4c:f8:5f",15000)         // PC
+//        sendTelegram("bot1", "Svenja wurde geblockt.")
+end
+
+rule "Jule: Erlaube Internet access"
+when
+	Item jule_internet_access received command ON
+then
+        var res = executeCommandLine("/etc/openhab2/commands/block_jule.sh unblock",15000)
+        logInfo("network_access_action.rules", "Ergebnis: Jule ON -> {} -", res)
+        if (res != "0") {
+            postUpdate(jule_internet_access, "OFF");
+        } else {
+            logInfo("network_access_action.rules", "Jule wurde freigeschaltet.")
+        }
+//        sendTelegram("bot1", "Jule wurde freigeschaltet.")
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh e0:c7:67:17:52:99",15000)         // iPhone
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh 84:8e:0c:c3:67:6b",15000)         // iPad
+        //executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:23:54:04:d3:ef",15000)         // PC
 end
 
 rule "Jule: Block internet access"
 when
-	Item jule_internet_access received command
+	Item jule_internet_access received command OFF
 then
-if ( jule_internet_access.state == OFF) {
-        executeCommandLine("/usr/local/bin/block_unifi.sh e0:c7:67:17:52:99",1000)         // iPhone
-        executeCommandLine("/usr/local/bin/block_unifi.sh 84:8e:0c:c3:67:6b",1000)         // iPad
-        executeCommandLine("/usr/local/bin/block_unifi.sh 00:23:54:04:d3:ef",1000)         // PC
-        logInfo("network_access_action.rules", "Jule wurde geblockt.")
+        var res = executeCommandLine("/etc/openhab2/commands/block_jule.sh block",15000)
+        logInfo("network_access_action.rules", "Ergebnis: Jule OFF -> {}", res)
+        if (res != "0") {
+            postUpdate(jule_internet_access, "ON");
+        } else {
+            logInfo("network_access_action.rules", "Jule wurde geblockt.")
+        }
 //        sendTelegram("bot1", "Jule wurde geblockt.")
-} else {
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh e0:c7:67:17:52:99",1000)         // iPhone
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 84:8e:0c:c3:67:6b",1000)         // iPad
-        executeCommandLine("/usr/local/bin/unblock_unifi.sh 00:23:54:04:d3:ef",1000)         // PC
-        logInfo("network_access_action.rules", "Jule wurde freigeschaltet.")
-//        sendTelegram("bot1", "Jule wurde freigeschaltet.")
-}
+        //executeCommandLine("/usr/local/bin/block_unifi.sh e0:c7:67:17:52:99",15000)         // iPhone
+        //executeCommandLine("/usr/local/bin/block_unifi.sh 84:8e:0c:c3:67:6b",15000)         // iPad
+        //executeCommandLine("/usr/local/bin/block_unifi.sh 00:23:54:04:d3:ef",15000)         // PC
 end
 
