@@ -141,7 +141,7 @@ String eingangslicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/eingangslicht/
 Number eingangslicht_humi "Luftfeuchtigkeit [%d %%]" { mqtt="<[mqtt:tele/eingangslicht/SENSOR:state:JSONPATH($.DHT11.Humidity)]" }
 Number eingangslicht_temp "Temperatur [%d %%]" { mqtt="<[mqtt:tele/eingangslicht/SENSOR:state:JSONPATH($.DHT11.Temperature)]" }
 
-Contact eingangstuer "Eingangstür [MAP(contacts.map):%s]" <door> (gDoors, gDoorStatus) {mqtt="<[mqtt:stat/eingangstuer/POWER2:state:MAP(ON_OPEN.map)]"}
+Contact eingangstuer "Eingangstür [MAP(contacts.map):%s]" <door> (gDoors, gDoorStatus) {mqtt="<[mqtt:stat/eingangstuer/POWER2:state:MAP(OFF_OPEN.map)]"}
 Contact flurtuer "Flurtür [MAP(contacts.map):%s]" <door> (gDoors, gDoorStatus) {mqtt="<[mqtt:stat/eingangstuer/POWER1:state:MAP(OFF_OPEN.map)]"}
 Contact bewegungflur "Bewegung Flur [MAP(contacts.map):%s]" <motion> (gMotion) {mqtt="<[mqtt:stat/eingangstuer/POWER3:state:MAP(ON_OPEN.map)]"}
 Number eingangstuer_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/eingangstuer/STATE:state:JSONPATH($.Wifi.RSSI)]" }
