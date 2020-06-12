@@ -1,0 +1,5 @@
+Group gServers
+
+Switch macmini_Status "Mac Mini [MAP(ON_AN.map):%s]" <tv> (gServerss) {channel="network:pingdevice:macmini:online"}
+DateTime macmini_LastSeen (gServerss) {channel="network:pingdevice:macmini:lastseen"}
+Number macmini_int

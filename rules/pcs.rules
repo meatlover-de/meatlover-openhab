@@ -1,0 +1,27 @@
+rule "Svenja LastSeen"
+when
+  Item SvenjaPC_LastSeen changed
+then
+  SvenjaPC_int.sendCommand(1)
+end
+
+rule "Svenja Offline"
+when
+  Item SvenjaPC_Status changed to OFF
+then
+  SvenjaPC_int.sendCommand(0)
+end
+
+rule "Jule LastSeen"
+when
+  Item JulePC_LastSeen changed
+then
+  JulePC_int.sendCommand(1)
+end
+
+rule "Jule Offline"
+when
+  Item JulePC_Status changed to OFF
+then
+  JulePC_int.sendCommand(0)
+end

@@ -1,0 +1,16 @@
+Group gPCs
+Switch SvenjaPC_Status "Svenja PC [MAP(ON_AN.map):%s]" <tv> (gPCs) {channel="network:pingdevice:svenjapc:online"}
+DateTime SvenjaPC_LastSeen (gPCs) {channel="network:pingdevice:svenjapc:lastseen"}
+Number SvenjaPC_int
+
+Switch JulePC_Status "Jule PC [MAP(ON_AN.map):%s]" <tv> (gPCs) {channel="network:pingdevice:julepc:online"}
+DateTime JulePC_LastSeen (gPCs) {channel="network:pingdevice:julepc:lastseen"}
+Number JulePC_int
+
+Switch MeikePC_Status "Meike PC [MAP(ON_AN.map):%s]" <tv> (gPCs) {channel="network:pingdevice:meikepc:online"}
+DateTime MeikePC_LastSeen (gPCs) {channel="network:pingdevice:meikepc:lastseen"}
+Number MeikePC_int
+
+Switch UdoPC_Status "Udo PC [MAP(ON_AN.map):%s]" <tv> (gPCs) {channel="network:pingdevice:udopc:online"}
+DateTime UdoPC_LastSeen (gPCs) {channel="network:pingdevice:udopc:lastseen"}
+Number UdoPC_int
