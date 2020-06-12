@@ -1,3 +1,8 @@
 Thing network:pingdevice:samsungtv [ hostname="192.168.1.39", retry=1, timeout=5000, refreshInterval=15000 ]
 Thing network:pingdevice:skyreceiver [ hostname="192.168.1.40", retry=1, timeout=5000, refreshInterval=15000 ]
 Thing network:pingdevice:rmpro [ hostname="192.168.1.85", retry=1, timeout=5000, refreshInterval=15000 ]
+Thing network:pingdevice:svenjapc [ hostname="192.168.1.103", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:julepc [ hostname="192.168.1.104", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:meikepc [ hostname="192.168.1.101", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:udopc [ hostname="192.168.1.100", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:macmini [ hostname="192.168.1.5", retry=1, timeout=5000, refreshInterval=60000 ]

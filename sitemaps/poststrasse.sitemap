@@ -781,7 +781,52 @@ sitemap poststrasse label="Poststr. 47" {
                                         }
                                 }
                                 Group item=empty_item label="Server" icon="it_network" {
-                                        Default item=empty_item
+                                        Group item=macmini_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=macmini_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=macmini_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=macmini_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=macmini_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=macmini_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                }
+                                Group item=gPCs label="PCs" icon="it_network" {
+                                        Group item=UdoPC_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=UdoPC_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=UdoPC_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=UdoPC_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=UdoPC_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=UdoPC_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                        Group item=MeikePC_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=MeikePC_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=MeikePC_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=MeikePC_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=MeikePC_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=MeikePC_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                        Group item=SvenjaPC_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=SvenjaPC_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=SvenjaPC_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=SvenjaPC_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=SvenjaPC_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=SvenjaPC_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                                        }
+                                        Group item=JulePC_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=JulePC_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=JulePC_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=JulePC_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=JulePC_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=JulePC_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
                                 }
                                 Group item=empty_item icon="it_network" {
                                         Default item=empty_item
