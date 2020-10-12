@@ -5,4 +5,9 @@ Thing network:pingdevice:svenjapc [ hostname="192.168.1.103", retry=1, timeout=5
 Thing network:pingdevice:julepc [ hostname="192.168.1.104", retry=1, timeout=5000, refreshInterval=60000 ]
 Thing network:pingdevice:meikepc [ hostname="192.168.1.101", retry=1, timeout=5000, refreshInterval=60000 ]
 Thing network:pingdevice:udopc [ hostname="192.168.1.100", retry=1, timeout=5000, refreshInterval=60000 ]
+
 Thing network:pingdevice:macmini [ hostname="192.168.1.5", retry=1, timeout=5000, refreshInterval=60000 ]
+
+Thing network:pingdevice:raspi1 [ hostname="192.168.1.154", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:raspi2 [ hostname="192.168.1.143", retry=1, timeout=5000, refreshInterval=60000 ]
+Thing network:pingdevice:raspi3 [ hostname="192.168.1.142", retry=1, timeout=5000, refreshInterval=60000 ]

@@ -1,7 +1,7 @@
-Bridge icloud:account:myaccount [appleId="itunes@cs-ol.de", password="Meike!Udo74", refreshTimeInMinutes=10]
+Bridge icloud:account:myaccount [appleId="itunes@cs-ol.de", password="Meike!Udo74", refreshTimeInMinutes=5]
 {
-    Thing device icloud_Udo_iPhone "Udo iPhone" @ "World" [deviceId="N6/YfGkS4PPP8IusplrFPToBI+duoLLSifKkk4AsyGZhRqISXmE6YOHYVNSUzmWV"]
-    Thing device icloud_Svenja_iPhone "Svenja iPhone" @ "World" [deviceId="PtkecB5l6NnX6d1k1mvlmIYTnRq8z+p4/XyDrX1PFcMb5dOFw+k8cCjgLByT6nvW9iNEAuSSdFXdY6Nb4ELBSo4DiDVdLLisIHVD4lAqdFoy9fzlt87zYA=="]
-    Thing device icloud_Meike_iPhone "Meike iPhone" @ "World" [deviceId="aE/fqseigerlwJkgj5phQi9ElgWzPG/AP+Z79UZX36qUrIq+eOUlQcBVBp1LtrMA+FR7Htw1Jd/dY6Nb4ELBSgum4TIqAM5V39o0yG+otZoy9fzlt87zYA=="]
-    Thing device icloud_Jule_iPhone "Jule iPhone" @ "World" [deviceId="IiYQb/hgzskAyKQTmS5xFNkfxLsOmmkBFUjHfGUhvjFjyasLFWnfie6xPRJhc1I+nJn6LPZY+UzdY6Nb4ELBSssJDDSAUUnbiFcbb6xrCogy9fzlt87zYA=="]
+    Thing device icloud_Udo_iPhone "Udo iPhone" [deviceId="Cqy9Jwq8nXS8Mz3MhMwXebluQ6faj7j1i7mxiFvihSk="]
+    Thing device icloud_Svenja_iPhone "Svenja iPhone" [deviceId="9uIVhm+hwvFT9daAsQUFGn+tyBeFWSRGBrzQJsze5Bx7bwtIYtiqALJCmYtYePoqrHtjCQY7MF/dY6Nb4ELBSo4DiDVdLLisIHVD4lAqdFoy9fzlt87zYA=="]
+    Thing device icloud_Meike_iPhone "Meike iPhone" [deviceId="X+d7JvcosL0XrDf4fUpInheSA0dtYarz/GzMbQGz7tXj+1tGrPgrI9WvVCf8d6Fx8hKgL59XTeDdY6Nb4ELBSgum4TIqAM5V39o0yG+otZoy9fzlt87zYA=="]
+    Thing device icloud_Jule_iPhone "Jule iPhone" [deviceId="tH4wRSLQdSgg2hLYtgHkB5N9buZWDPD74CYMQWJ72xt9btTIkcRiDy8u66v18VIAxG3zb0eSbBbdY6Nb4ELBSssJDDSAUUnbiFcbb6xrCogy9fzlt87zYA=="]
 }

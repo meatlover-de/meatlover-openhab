@@ -25,3 +25,31 @@ when
 then
   JulePC_int.sendCommand(0)
 end
+
+rule "Meike LastSeen"
+when
+  Item MeikePC_LastSeen changed
+then
+  MeikePC_int.sendCommand(1)
+end
+
+rule "Meike Offline"
+when
+  Item MeikePC_Status changed to OFF
+then
+  MeikePC_int.sendCommand(0)
+end
+
+rule "Udo LastSeen"
+when
+  Item UdoPC_LastSeen changed
+then
+  UdoPC_int.sendCommand(1)
+end
+
+rule "Udo Offline"
+when
+  Item UdoPC_Status changed to OFF
+then
+  UdoPC_int.sendCommand(0)
+end

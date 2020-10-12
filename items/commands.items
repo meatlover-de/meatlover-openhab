@@ -1,0 +1,3 @@
+Switch CableRouterCheck "Check uptime" {channel="exec:command:uptime_cablerouter:run"}
+String CableRouterUptime "Uptime [%s]" {channel="exec:command:uptime_cablerouter:output"}
+DateTime CableRouterUptime_LastRun "Last run [%s]"  {channel="exec:command:uptime_cablerouter:lastexecution"}

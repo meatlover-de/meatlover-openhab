@@ -3,3 +3,16 @@ Group gServers
 Switch macmini_Status "Mac Mini [MAP(ON_AN.map):%s]" <tv> (gServerss) {channel="network:pingdevice:macmini:online"}
 DateTime macmini_LastSeen (gServerss) {channel="network:pingdevice:macmini:lastseen"}
 Number macmini_int
+
+Switch raspi1_Status "raspi1 [MAP(ON_AN.map):%s]" <tv> (gServerss) {channel="network:pingdevice:raspi1:online"}
+DateTime raspi1_LastSeen (gServerss) {channel="network:pingdevice:raspi1:lastseen"}
+Number raspi1_int
+
+Switch raspi2_Status "raspi2 [MAP(ON_AN.map):%s]" <tv> (gServerss) {channel="network:pingdevice:raspi2:online"}
+DateTime raspi2_LastSeen (gServerss) {channel="network:pingdevice:raspi2:lastseen"}
+Number raspi2_int
+
+Switch raspi3_Status "raspi3 [MAP(ON_AN.map):%s]" <tv> (gServerss) {channel="network:pingdevice:raspi3:online"}
+DateTime raspi3_LastSeen (gServerss) {channel="network:pingdevice:raspi3:lastseen"}
+Number raspi3_int
+

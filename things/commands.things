@@ -1,0 +1,1 @@
+Thing exec:command:uptime_cablerouter [command="/etc/openhab2/scripts/getrouteruptime.sh", interval=300]

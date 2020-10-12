@@ -1,0 +1,55 @@
+rule "macmini LastSeen"
+when
+  Item macmini_LastSeen changed
+then
+  macmini_int.sendCommand(1)
+end
+
+rule "macmini Offline"
+when
+  Item macmini_Status changed to OFF
+then
+  macmini_int.sendCommand(0)
+end
+
+rule "raspi1 LastSeen"
+when
+  Item raspi1_LastSeen changed
+then
+  raspi1_int.sendCommand(1)
+end
+
+rule "raspi1 Offline"
+when
+  Item raspi1_Status changed to OFF
+then
+  raspi1_int.sendCommand(0)
+end
+
+rule "raspi2 LastSeen"
+when
+  Item raspi2_LastSeen changed
+then
+  raspi2_int.sendCommand(1)
+end
+
+rule "raspi2 Offline"
+when
+  Item raspi2_Status changed to OFF
+then
+  raspi2_int.sendCommand(0)
+end
+
+rule "raspi3 LastSeen"
+when
+  Item raspi3_LastSeen changed
+then
+  raspi3_int.sendCommand(1)
+end
+
+rule "raspi3 Offline"
+when
+  Item raspi3_Status changed to OFF
+then
+  raspi3_int.sendCommand(0)
+end

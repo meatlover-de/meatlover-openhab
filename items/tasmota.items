@@ -6,7 +6,7 @@ Group gPower <power>
 Group:Number:SUM gPowerSum "Gesamt [%d W]" <energy> (gPower)
 
 // Funktion
-Switch abendlicht "Abendlicht" <light> (gSockets) {mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/abendlicht/power:command:*:default]"}
+Switch abendlicht "Abendlicht" <light> (gSockets) {mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.POWER)], >[mqtt:cmnd/abendlicht/power:command:*:default]", homekit="Lighting"}
 Number abendlicht_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.Wifi.RSSI)]" }
 DateTime abendlicht_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/abendlicht/STATE:state:JSONPATH($.Time)]"}
 String abendlicht_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/abendlicht/INFO1:state:JSONPATH($.Version)]"}
@@ -103,7 +103,7 @@ Number sonoff3_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/sonoff3/SEN
 Number sonoff3_current "Sonoff3 [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/sonoff3/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
 
 // Funktion
-Switch schlafzimmer "Schlafzimmerlicht" <light> (gSockets) {mqtt="<[mqtt:tele/schlafzimmer/STATE:state:JSONPATH($.POWER1)], >[mqtt:cmnd/schlafzimmer/power:command:*:default]"}
+Switch schlafzimmer "Schlafzimmerlicht" <light> (gSockets) {mqtt="<[mqtt:tele/schlafzimmer/STATE:state:JSONPATH($.POWER1)], >[mqtt:cmnd/schlafzimmer/power:command:*:default]", homekit="Lighting"}
 Number schlafzimmer_rssi "RSSI [%d %%]" { mqtt="<[mqtt:tele/schlafzimmer/STATE:state:JSONPATH($.Wifi.RSSI)]" }
 DateTime schlafzimmer_lastupdate "Aktualisierung [%1$td.%1$tm.%1$tY, %1$tH:%1$tM]" <time> { mqtt="<[mqtt:tele/schlafzimmer/STATE:state:JSONPATH($.Time)]"}
 String schlafzimmer_firmware "Firmware [%s]" { mqtt="<[mqtt:tele/schlafzimmer/INFO1:state:JSONPATH($.Version)]"}
@@ -130,7 +130,7 @@ Number akkulader_voltage "Spannung aktuell [%d V]" { mqtt="<[mqtt:tele/akkulader
 Number akkulader_current "Akkulader [%.3f A]" <current> (gCurrents,gCurrentsSum) { mqtt="<[mqtt:tele/akkulader/SENSOR:state:JSONPATH($.ENERGY.Current)]" }
 
 Group gEingang
-Switch eingangslicht "Eingangslicht" <light> (gEingang, gSockets) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.POWER1)], >[mqtt:cmnd/eingangslicht/power1:command:*:default]"}
+Switch eingangslicht "Eingangslicht" <light> (gEingang, gSockets) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.POWER1)], >[mqtt:cmnd/eingangslicht/power1:command:*:default]", homekit="Lighting"}
 Switch eingangslicht_fade "Fading" (gEingang) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Fade)], >[mqtt:cmnd/eingangslicht/fade:command:*:default]"}
 Number eingangslicht_fadetime "Fadespeed [%.0f]" (gEingang) {mqtt="<[mqtt:tele/eingangslicht/STATE:state:JSONPATH($.Speed)], >[mqtt:cmnd/eingangslicht/Speed:command:*:default]"}
 Number eingangslicht_standard "Mindesthelligkeit [%.0f]" (gEingang)

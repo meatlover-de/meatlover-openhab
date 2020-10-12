@@ -781,6 +781,36 @@ sitemap poststrasse label="Poststr. 47" {
                                         }
                                 }
                                 Group item=empty_item label="Server" icon="it_network" {
+                                    Frame item=empty_item label="Raspberry Pis" {
+                                        Group item=raspi1_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=raspi1_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=raspi1_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=raspi1_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=raspi1_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=raspi1_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                        Group item=raspi2_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=raspi2_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=raspi2_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=raspi2_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=raspi2_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=raspi2_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                        Group item=raspi3_Status {
+                                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                                Chart item=raspi3_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                                Chart item=raspi3_int period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                                Chart item=raspi3_int period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                                Chart item=raspi3_int period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                                Chart item=raspi3_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+
+                                        }
+                                    }
+                                    Frame item=empty_item label="Mac's" {
                                         Group item=macmini_Status {
                                                         Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
                                                                 Chart item=macmini_int period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
@@ -790,6 +820,7 @@ sitemap poststrasse label="Poststr. 47" {
                                                                 Chart item=macmini_int period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
 
                                         }
+                                    }
                                 }
                                 Group item=gPCs label="PCs" icon="it_network" {
                                         Group item=UdoPC_Status {
@@ -828,8 +859,17 @@ sitemap poststrasse label="Poststr. 47" {
 
                                         }
                                 }
-                                Group item=empty_item icon="it_network" {
-                                        Default item=empty_item
+                                Group item=empty_item icon="it_network" label="Kabelrouter" {
+                                        Group item=CableRouterUptime {
+                                        Switch item=CHART_PERIOD label="" mappings=[0="H", 1="D", 2="W", 3="M", 4="Y"]
+                                                Chart item=CableRouterUptime period=h refresh=60000 visibility=[CHART_PERIOD==0] legend=true
+                                                Chart item=CableRouterUptime period=D refresh=60000 visibility=[CHART_PERIOD==1, CHART_PERIOD=="Uninitialized"] legend=true
+                                                Chart item=CableRouterUptime period=W refresh=60000 visibility=[CHART_PERIOD==2] legend=true
+                                                Chart item=CableRouterUptime period=M refresh=60000 visibility=[CHART_PERIOD==3] legend=true
+                                                Chart item=CableRouterUptime period=Y refresh=60000 visibility=[CHART_PERIOD==4] legend=true
+                                        }
+                                        Default item=CableRouterUptime_LastRun
+                                        Default item=CableRouterCheck
                                 }
                                 Group item=empty_item label="Kameras" icon="camera" {
                                         Default item=empty_item

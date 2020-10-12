@@ -8,7 +8,7 @@ $action = $argv[1];
 
 $debug=false;
 
-$ip_jule = array('192.168.1.104','192.168.1.113','192.168.1.116','192.168.1.175','192.168.1.161');
+$ip_jule = array('192.168.1.104','192.168.1.113','192.168.1.116','192.168.1.161','192.168.1.175','192.168.1.183','192.168.3.211);
 
 $group_id = "5cc7510bb6574a0223c15765";
 $site_id = 'default';
@@ -18,7 +18,7 @@ $group_type = "address-group";
 /**
  * initialize the UniFi API connection class and log in to the controller
  */
-$unifi_connection = new UniFi_API\Client($controlleruser, $controllerpassword, $controllerurl, $site_id, $controllerversion);
+$unifi_connection = new UniFi_API\Client($controlleruser, $controllerpassword, $controllerurl, $site_id, $controllerversion, false);
 $set_debug_mode   = $unifi_connection->set_debug($debug);
 $loginresults     = $unifi_connection->login(); // always true regardless of site id
 
